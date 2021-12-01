@@ -1,6 +1,7 @@
 import numpy as np 
 import pandas as pd
 import matplotlib.pyplot as plt 
+import math as ma
 
 
 import sklearn as sk 
