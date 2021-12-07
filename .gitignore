@@ -1,3 +1,2 @@
-__pycache__
-data.csv
-dataBig.csv
+./__pycache__/
+*.csv
