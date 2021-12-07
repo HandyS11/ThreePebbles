@@ -1,7 +1,7 @@
 from game import *
+from modules import *
 
-import time
-import csv
+
 
 def generateData(nbLignes):
 
@@ -19,4 +19,11 @@ def generateData(nbLignes):
             spamwriter.writerow([winner, round, tab])
             
     t2 = time.time()
-    print("Durée : ", t2 - t1, "s")
+    print("Length: ", t2 - t1, "s\n")
+
+
+if (True):
+    print("Begin of the generation.\n")
+    nbLignes = 1000000
+    generateData(nbLignes)
+    print("Generation complete.")
