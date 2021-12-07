@@ -3,7 +3,7 @@ from modules import *
 
 
 
-def generateData(nbLignes):
+def generateData(nbLignes, nbCaillouxJ1, nbCaillouxJ2):
 
     t1 = time.time()
 
@@ -15,7 +15,7 @@ def generateData(nbLignes):
 
         for i in range(0, nbLignes):
 
-            [winner, round, tab] = game()
+            [winner, round, tab] = game(nbCaillouxJ1, nbCaillouxJ2)
             spamwriter.writerow([winner, round, tab])
             
     t2 = time.time()
@@ -23,7 +23,11 @@ def generateData(nbLignes):
 
 
 if (True):
-    print("Begin of the generation.\n")
+    
     nbLignes = 1000000
-    generateData(nbLignes)
+    nbCaillouxJ1 = 3
+    nbCaillouxJ2 = 3
+    
+    print("Beginnig generation.\n")
+    generateData(nbLignes, nbCaillouxJ1, nbCaillouxJ2)
     print("Generation complete.")
