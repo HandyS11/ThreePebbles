@@ -29,7 +29,7 @@ def generateData(nbLignes, nbCaillouxJ1, nbCaillouxJ2):
 
 if (True):
     
-    nbLignes = 100
+    nbLignes = 1000
     nbCaillouxJ1 = 3
     nbCaillouxJ2 = 3
     

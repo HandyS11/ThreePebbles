@@ -24,12 +24,12 @@ def gameWithIA(joueurQuiCommence, nbCaillouxJ1, nbCaillouxJ2):
                 tabI = [winnerRound, predictionJ1, predictionJ2, nbCaillouxJ1, nbCaillouxJ2]
             tab.append(tabI)
             
-        elif (winnerRound == 2):
-            if (round%2 == 0):     
-                tabI = [winnerRound, predictionJ1, predictionJ2, nbCaillouxJ1, nbCaillouxJ2]
-            else:
-                tabI = [winnerRound, predictionJ1, -1, nbCaillouxJ1, nbCaillouxJ2]
-            tab.append(tabI)
+        #elif (winnerRound == 2):
+        #    if (round%2 == 0):     
+        #        tabI = [winnerRound, predictionJ1, predictionJ2, nbCaillouxJ1, nbCaillouxJ2]
+        #    else:
+        #        tabI = [winnerRound, predictionJ1, -1, nbCaillouxJ1, nbCaillouxJ2]
+        #    tab.append(tabI)
         
         
         round = round + 1

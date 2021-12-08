@@ -85,7 +85,7 @@ def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaAr
         print(DTconf);
         printTree(mostAccurate)
   
-    elif (accKNN >= accDT) and (accKNN >= accSVM):
+    elif (accKNN >= accDT) and (accKNN >= accSVC):
         mostAccurate = clfKNN
         print("KNN choosen : ",accKNN," accuracy")
         print(KNNConf);
