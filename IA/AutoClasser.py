@@ -29,7 +29,7 @@ def sanitizeSex(arr):
 
 def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaArg):
     X = np.asarray(X);
-    X = X.reshape((X.shape[1],2))
+    X = X.reshape((X.shape[1],X.shape[0]))
     y = np.asarray(y);
 
     print(X);
