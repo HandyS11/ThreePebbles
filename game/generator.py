@@ -11,7 +11,7 @@ def generateData(nbLignes, nbCaillouxJ1, nbCaillouxJ2):
         spamwriter = csv.writer(csvfile, delimiter= ' '
         , quotechar='|', quoting=csv.QUOTE_MINIMAL)
 
-        spamwriter.writerow(['Winner', 'nbRoud', 'Data'])
+        spamwriter.writerow(['Winner', 'nbRound', 'Data'])
 
         for i in range(0, nbLignes):
 
@@ -24,7 +24,7 @@ def generateData(nbLignes, nbCaillouxJ1, nbCaillouxJ2):
 
 if (True):
     
-    nbLignes = 1000000
+    nbLignes = 100000
     nbCaillouxJ1 = 3
     nbCaillouxJ2 = 3
     
