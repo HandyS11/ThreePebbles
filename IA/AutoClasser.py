@@ -3,6 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import sklearn as sk
 import math as ma
+from sklearn.datasets import load_iris
+from sklearn import tree
 
 def arrayIse(notArr):
     Arr = np.asarray(notArr)
@@ -74,7 +76,7 @@ def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaAr
         mostAccurate = clfDT
         print("Decision tree choosen : ",accDT," accuracy")
         print(DTconf);
-        #plt.show();    #to show the tree in full
+        printTree(mostAccurate)
   
     elif (accKNN >= accDT) and (accKNN >= accSVM):
         mostAccurate = clfKNN
@@ -90,3 +92,7 @@ def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaAr
 def AutoPredict(data, model):
     data = sanitize(arrayIse(data));
     return model.predict(data);
+
+def printTree(model):
+    tree.plot_tree(model)
+    plt.show();
