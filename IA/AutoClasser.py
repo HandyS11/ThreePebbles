@@ -29,9 +29,10 @@ def sanitizeSex(arr):
 
 def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaArg):
     X = np.asarray(X);
+    X = X.reshape((X.shape[1],2))
     y = np.asarray(y);
 
-    print(X.shape, y.shape);
+    print(X);
     if(X.shape[0] == 1):
         X = sanitize(arrayIse(X));
 
@@ -96,7 +97,9 @@ def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaAr
     return mostAccurate;
 
 def AutoPredict(data, model):
-    data = sanitize(arrayIse(data));
+    data = np.asarray(data);
+    if(data.shape[0] == 1):
+        data = sanitize(arrayIse(data));
     return model.predict(data);
 
 def printTree(model):

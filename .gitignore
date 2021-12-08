@@ -1,2 +1,4 @@
-./__pycache__/
+./game/__pycache__/
+./IA/__pycache__/
 *.csv
+*.pyc
