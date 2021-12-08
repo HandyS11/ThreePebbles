@@ -1,4 +1,5 @@
 from game import *
+from gameWithIA import *
 from modules import *
 
 
@@ -15,7 +16,8 @@ def generateData(nbLignes, nbCaillouxJ1, nbCaillouxJ2):
 
         for i in range(0, nbLignes):
 
-            [winner, round, tab] = game(nbCaillouxJ1, nbCaillouxJ2)
+            #[winner, round, tab] = game(nbCaillouxJ1, nbCaillouxJ2)
+            [winner, round, tab] = gameWithIA(1, nbCaillouxJ1, nbCaillouxJ2)
             spamwriter.writerow([winner, round, tab])
             
     t2 = time.time()
@@ -24,7 +26,7 @@ def generateData(nbLignes, nbCaillouxJ1, nbCaillouxJ2):
 
 if (True):
     
-    nbLignes = 100000
+    nbLignes = 1000
     nbCaillouxJ1 = 3
     nbCaillouxJ2 = 3
     

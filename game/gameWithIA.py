@@ -1,7 +1,7 @@
 import random
 
 
-def game(nbCaillouxJ1, nbCaillouxJ2, joueurQuiCommence):
+def gameWithIA(joueurQuiCommence, nbCaillouxJ1, nbCaillouxJ2):
 
     winner = 0
     winnerRound = 0
@@ -14,7 +14,7 @@ def game(nbCaillouxJ1, nbCaillouxJ2, joueurQuiCommence):
             [winnerRound, nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2] = manche(round, nbCaillouxJ1, nbCaillouxJ2)
         else:
             [winnerRound, nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2] = manche2(round, nbCaillouxJ1, nbCaillouxJ2)
-     
+
      
         if (winnerRound == 1):  
             if (round%2 == 0):     
