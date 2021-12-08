@@ -18,7 +18,10 @@ def generateData(nbLignes, nbCaillouxJ1, nbCaillouxJ2):
 
             #[winner, round, tab] = game(nbCaillouxJ1, nbCaillouxJ2)
             [winner, round, tab] = gameWithIA(1, nbCaillouxJ1, nbCaillouxJ2)
-            spamwriter.writerow([winner, round, tab])
+            #spamwriter.writerow([winner, round, tab])
+            tab = np.asarray(tab)
+            for i in range(0, tab.shape[0]):        
+                spamwriter.writerow(tab[i])
             
     t2 = time.time()
     print("Length: ", t2 - t1, "s\n")
@@ -26,7 +29,7 @@ def generateData(nbLignes, nbCaillouxJ1, nbCaillouxJ2):
 
 if (True):
     
-    nbLignes = 1000
+    nbLignes = 100
     nbCaillouxJ1 = 3
     nbCaillouxJ2 = 3
     

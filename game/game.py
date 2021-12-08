@@ -53,10 +53,10 @@ def manche(round, nbCaillouxJ1, nbCaillouxJ2):
 
         if (predictionJ2 == nbCaillouxTotaux):
             nbCaillouxJ2 = nbCaillouxJ2 - 1
-            winnerRound = 1
+            winnerRound = 2
         elif (predictionJ1 == nbCaillouxTotaux):
             nbCaillouxJ1 = nbCaillouxJ1 - 1
-            winnerRound = 2
+            winnerRound = 1
 
     return [winnerRound ,nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2]
 
