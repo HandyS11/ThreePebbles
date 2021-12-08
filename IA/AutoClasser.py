@@ -28,7 +28,13 @@ def sanitizeSex(arr):
     return arr;
 
 def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaArg):
-    X = sanitize(arrayIse(X));
+    X = np.asarray(X);
+    y = np.asarray(y);
+
+    print(X.shape, y.shape);
+    if(X.shape[0] == 1):
+        X = sanitize(arrayIse(X));
+
     y = sanitize(y);
 
     from sklearn.model_selection import train_test_split
