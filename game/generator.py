@@ -12,7 +12,7 @@ def generateData(nbLignes, nbCaillouxJ1, nbCaillouxJ2):
         spamwriter = csv.writer(csvfile, delimiter= ' '
         , quotechar='|', quoting=csv.QUOTE_MINIMAL)
 
-        spamwriter.writerow(['Winner', 'nbRound', 'Data'])
+        spamwriter.writerow(['winnerRound', 'predictionJ1', 'predictionJ2', 'nbCaillouxJ1', "nbCaillouxJ2"])
 
         for i in range(0, nbLignes):
 

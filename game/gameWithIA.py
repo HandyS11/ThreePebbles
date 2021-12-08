@@ -10,18 +10,26 @@ def gameWithIA(joueurQuiCommence, nbCaillouxJ1, nbCaillouxJ2):
 
     while (winner == 0):
 
-        #[winnerRound, nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2] = manche(round, nbCaillouxJ1, nbCaillouxJ2)
-        if (joueurQuiCommence == 1):
-            [winnerRound, nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2] = manche(round, nbCaillouxJ1, nbCaillouxJ2)
-        else:
-            [winnerRound, nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2] = manche2(round, nbCaillouxJ1, nbCaillouxJ2)
-
-
-        if (round%2 == 0):     
-            tabI = [winnerRound, predictionJ1, -1]
-        else:
-            tabI = [winnerRound, predictionJ1, predictionJ2]
-        tab.append(tabI)
+        [winnerRound, nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2] = manche(round, nbCaillouxJ1, nbCaillouxJ2)
+        #if (joueurQuiCommence == 1):
+        #    [winnerRound, nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2] = manche(round, nbCaillouxJ1, nbCaillouxJ2)
+        #else:
+        #    [winnerRound, nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2] = manche2(round, nbCaillouxJ1, nbCaillouxJ2)
+        
+        
+        if (winnerRound == 1):
+            if (round%2 == 0):     
+                tabI = [winnerRound, predictionJ1, -1, nbCaillouxJ1, nbCaillouxJ2]
+            else:
+                tabI = [winnerRound, predictionJ1, predictionJ2, nbCaillouxJ1, nbCaillouxJ2]
+            tab.append(tabI)
+            
+        elif (winnerRound == 2):
+            if (round%2 == 0):     
+                tabI = [winnerRound, predictionJ1, predictionJ2, nbCaillouxJ1, nbCaillouxJ2]
+            else:
+                tabI = [winnerRound, predictionJ1, -1, nbCaillouxJ1, nbCaillouxJ2]
+            tab.append(tabI)
         
         
         round = round + 1
