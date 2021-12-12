@@ -1,10 +1,5 @@
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import sklearn as sk
-import math as ma
-from sklearn.datasets import load_iris
-from sklearn import tree
+from modules import *
+
 
 def arrayIse(notArr):
     Arr = np.asarray(notArr)

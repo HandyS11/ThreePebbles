@@ -1,5 +1,5 @@
 from game import *
-from gameWithIA import *
+from gameRandom import *
 from modules import *
 
 
@@ -29,7 +29,7 @@ def generateData(nbLignes, nbCaillouxJ1, nbCaillouxJ2):
 
 if (True):
     
-    nbLignes = 1000
+    nbLignes = 10000
     nbCaillouxJ1 = 3
     nbCaillouxJ2 = 3
     

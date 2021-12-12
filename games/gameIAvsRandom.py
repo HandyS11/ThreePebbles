@@ -1,4 +1,5 @@
 import random
+from play import *
 
 
 def gameIAvsRandom(nbCaillouxJ1, nbCaillouxJ2):

@@ -1,4 +1,5 @@
-./game/__pycache__/
+./games/__pycache__/
 ./IA/__pycache__/
+./main/__pycache__/
 *.csv
 *.pyc

@@ -1,0 +1,8 @@
+{
+    "python.analysis.extraPaths": [
+        "./game",
+        "./IA",
+        "./main",
+        "./games"
+    ]
+}
