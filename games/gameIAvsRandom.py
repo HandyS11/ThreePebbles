@@ -1,4 +1,6 @@
 import random
+import sys
+sys.path.append("./IA")
 from play import *
 
 
