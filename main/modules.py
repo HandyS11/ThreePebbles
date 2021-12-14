@@ -7,6 +7,9 @@ import csv
 import random
 import sys
 
+import pickle
+from joblib import dump, load
+
 import sklearn as sk 
 
 from sklearn.datasets import load_digits
