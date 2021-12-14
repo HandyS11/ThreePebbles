@@ -1,7 +1,7 @@
 import random
 
 
-def game(nbCaillouxJ1, nbCaillouxJ2):
+def gameBasic(nbCaillouxJ1, nbCaillouxJ2):
 
     winner = 0
     winnerRound = 0

@@ -1,5 +1,5 @@
 import sys
-sys.path.append("./main")
+sys.path.append("./../main")
 from modules import *
 
 

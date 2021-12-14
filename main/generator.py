@@ -1,6 +1,6 @@
 from modules import *
-sys.path.append("./games")
-import gameBasic
+sys.path.append("./../games")
+from gameBasic import *
 from gameRandom import *
 
 
@@ -14,7 +14,7 @@ def generateData(option, nbLignes, nbCaillouxJ1, nbCaillouxJ2):
         , quotechar='|', quoting=csv.QUOTE_MINIMAL)
 
         if (option == 1):
-            spamwriter.writerow(['winnerRound', 'predictionJ1', 'predictionJ2', 'nbCaillouxJ1', "nbCaillouxJ2"])
+            spamwriter.writerow(['winnerRound', 'predictionJ1', 'predictionJ2', 'nbCaillouxJ1', "nbCaillouxJ2", "choixJ1"])
 
             for i in range(0, nbLignes):    
                 [winner, round, tab] = gameWithIA(1, nbCaillouxJ1, nbCaillouxJ2)

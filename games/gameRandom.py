@@ -15,9 +15,9 @@ def gameWithIA(joueurQuiCommence, nbCaillouxJ1, nbCaillouxJ2):
         
         if (winnerRound == 1):
             if (round%2 == 0):     
-                tabI = [winnerRound, predictionJ1, -1, nbCaillouxJ1, nbCaillouxJ2]
+                tabI = [winnerRound, predictionJ1, -1, nbCaillouxJ1, nbCaillouxJ2, choixJ1]
             else:
-                tabI = [winnerRound, predictionJ1, predictionJ2, nbCaillouxJ1, nbCaillouxJ2]
+                tabI = [winnerRound, predictionJ1, predictionJ2, nbCaillouxJ1, nbCaillouxJ2, choixJ1]
             tab.append(tabI)
         
         
