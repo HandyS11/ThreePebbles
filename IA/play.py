@@ -1,4 +1,5 @@
 from train import *
+import numpy as np
 
 def playRoundBigBrain(predictionJ2,nbCaillouxJ1,nbCaillouxJ2,model):
      AutoPredict([predictionJ2,nbCaillouxJ1,nbCaillouxJ2],[1,1,1],model)[0];

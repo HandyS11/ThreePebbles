@@ -94,10 +94,46 @@ def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaAr
     return mostAccurate;
 
 def AutoPredict(data, model):
+    #data = np.asarray(data);
+    #if(data.shape[0] == 1):
+    #    data = sanitize(arrayIse(data));
     data = np.asarray(data);
-    if(data.shape[0] == 1):
-        data = sanitize(arrayIse(data));
-    return model.predict(data);
+    #data = arrayIse(data);
+    print(data);
+    data = data[np.newaxis, :];
+    print(data);
+    print(data.shape);
+    data.reshape(1,2);
+    print(data.shape);
+    i = model.predict(data);
+    print("done ",i);
+    return i;
+
+def AutoPredictChoix(data, model):
+    #data = np.asarray(data);
+    #if(data.shape[0] == 1):
+    #    data = sanitize(arrayIse(data));
+    data = np.asarray(data);
+    #data = arrayIse(data);
+    print(data);
+    data = data[np.newaxis, :];
+    print(data);
+    print(data.shape);
+    data.reshape(1,2);
+    print(data.shape);
+    i = model.predict(data);
+    print("done ",i);
+    return i;
+
+def AutoPredictPrediction(data, model):
+    data = np.asarray(data);
+    print(data);
+    print(data.shape);
+    data.reshape(1,2);
+    print(data.shape);
+    i = model.predict(data);
+    print("done ",i);
+    return i;
 
 def printTree(model):
     tree.plot_tree(model)

@@ -3,6 +3,7 @@ sys.path.append("./../games")
 from gameIAvsRandom import *
 import pickle
 from joblib import dump, load
+import numpy as np
 
 
 f = open("./../IA/choix.pickle",'r+b')
