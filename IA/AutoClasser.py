@@ -1,5 +1,5 @@
 import sys
-sys.path.append("./../main")
+sys.path.append("./main")
 from modules import *
 
 
@@ -118,14 +118,12 @@ def AutoPredictChoix(data, model):
     data = data[np.newaxis, :];
     data.reshape(1,2);
     i = model.predict(data);
-    print("done ",i);
     return i;
 
 def AutoPredictPrediction(data, model):
     data = np.asarray(data);
     data = data[np.newaxis, :];
     i = model.predict(data);
-    print("done ",i);
     return i;
 
 def printTree(model):

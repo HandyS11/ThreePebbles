@@ -1,5 +1,5 @@
 from modules import *
-sys.path.append("./../games")
+sys.path.append("./games")
 from gameIAvsRandom import *
 import pickle
 from joblib import dump, load
@@ -7,8 +7,8 @@ import numpy as np
 import warnings
 warnings.filterwarnings("ignore")
 
-f = open("./../IA/choix.pickle",'r+b')
-fi = open("./../IA/prediction.pickle", 'r+b')
+f = open("./IA/choix.pickle",'r+b')
+fi = open("./IA/prediction.pickle", 'r+b')
 choix = pickle.load(f);
 prediction = pickle.load(fi);
 
@@ -16,7 +16,7 @@ prediction = pickle.load(fi);
 print("Début de la simulation ..\n")
 
 
-nbGames = 3
+nbGames = 10000
 nbCaillouxJ1 = 3
 nbCaillouxJ2 = 3
 nbVictoireIA = 0
@@ -29,7 +29,6 @@ for i in range(0, nbGames):
     sommeRounds = sommeRounds + round
     if (winner == 1):
         nbVictoireIA = nbVictoireIA + 1
-    
 
 print("L'IA a gagné ", nbVictoireIA, " partie sur ", nbGames)
 print("Soit un pourcentage de victoire de ", nbVictoireIA/nbGames*100, "%")

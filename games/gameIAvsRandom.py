@@ -1,6 +1,6 @@
 import random
 import sys
-sys.path.append("./../IA")
+sys.path.append("./IA")
 from play import *
 
 
@@ -61,8 +61,7 @@ def manche(round, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
 
     else:
         predictionJ1 = predictionJ2
-        while (predictionJ1 == predictionJ2):
-            predictionJ1 = predictionBigBrain(nbCaillouxJ1, nbCaillouxJ2, predictionJ2, choixJ1, prediction) 
+        predictionJ1 = predictionBigBrain(nbCaillouxJ1, nbCaillouxJ2, predictionJ2, choixJ1, prediction)
         if (predictionJ1 > (nbCaillouxJ1+nbCaillouxJ2)):
             predictionJ1 = (nbCaillouxJ1+nbCaillouxJ2)
             
