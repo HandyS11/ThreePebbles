@@ -4,7 +4,7 @@ sys.path.append("./../IA")
 from play import *
 
 
-def gameIAvsRandom(nbCaillouxJ1, nbCaillouxJ2):
+def gameIAvsRandom(nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
 
     winner = 0
     winnerRound = 0
@@ -13,7 +13,7 @@ def gameIAvsRandom(nbCaillouxJ1, nbCaillouxJ2):
 
     while (winner == 0):
 
-        [winnerRound, nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2] = manche(round, nbCaillouxJ1, nbCaillouxJ2)
+        [winnerRound, nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2] = manche(round, nbCaillouxJ1, nbCaillouxJ2, choix, prediction)
         tabI = [winnerRound, nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2]
         tab.append(tabI)
         
@@ -27,11 +27,11 @@ def gameIAvsRandom(nbCaillouxJ1, nbCaillouxJ2):
     return [winner, round, tab]
 
 
-def manche(round, nbCaillouxJ1, nbCaillouxJ2):
+def manche(round, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
 
     winnerRound = 0
     
-    choixJ1 = choixBigBrain(nbCaillouxJ1, nbCaillouxJ2)
+    choixJ1 = choixBigBrain(nbCaillouxJ1, nbCaillouxJ2, choix)
     if (choixJ1 > nbCaillouxJ1):
         choixJ1 = nbCaillouxJ1
         
@@ -43,7 +43,7 @@ def manche(round, nbCaillouxJ1, nbCaillouxJ2):
 
     if (round%2 == 0):
         while ():  
-            predictionJ1 = predictionBigBrain(nbCaillouxJ1, nbCaillouxJ2, -1, choixJ1)
+            predictionJ1 = predictionBigBrain(nbCaillouxJ1, nbCaillouxJ2, -1, choixJ1, prediction)
         if (predictionJ1 > (nbCaillouxJ1+nbCaillouxJ2)):
             predictionJ1 = (nbCaillouxJ1+nbCaillouxJ2)
             
@@ -60,7 +60,7 @@ def manche(round, nbCaillouxJ1, nbCaillouxJ2):
     else:
         predictionJ1 = predictionJ2
         while (predictionJ1 == predictionJ2):
-            predictionJ1 = predictionJ1 = predictionBigBrain(nbCaillouxJ1, nbCaillouxJ2, predictionJ2, choixJ1) 
+            predictionJ1 = predictionJ1 = predictionBigBrain(nbCaillouxJ1, nbCaillouxJ2, predictionJ2, choixJ1, prediction) 
         if (predictionJ1 > (nbCaillouxJ1+nbCaillouxJ2)):
             predictionJ1 = (nbCaillouxJ1+nbCaillouxJ2)
             
@@ -74,5 +74,5 @@ def manche(round, nbCaillouxJ1, nbCaillouxJ2):
     return [winnerRound ,nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2]
 
 
-if (True):
+if (False):
     [winner, round, tab] = gameIAvsRandom(3, 3)

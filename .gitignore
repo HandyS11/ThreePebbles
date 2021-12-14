@@ -1,6 +1,6 @@
 ./games/__pycache__/
 ./IA/__pycache__/
 ./main/__pycache__/
-./vscode/
+./.vscode/
 *.csv
 *.pyc

@@ -5,10 +5,11 @@ import pickle
 from joblib import dump, load
 
 
-f = open("choix.pickle",'r+b')
-fi = open("prediction.pickle", 'r+b')
+f = open("./../IA/choix.pickle",'r+b')
+fi = open("./../IA/prediction.pickle", 'r+b')
 choix = pickle.load(f);
 prediction = pickle.load(fi);
+
 
 print("Début de la simulation ..\n")
 
@@ -20,8 +21,9 @@ nbVictoireIA = 0
 sommeRounds = 0
 
 
+
 for i in range(0, nbGames):
-    [winner, round, tab] = gameIAvsRandom(nbCaillouxJ1, nbCaillouxJ2)
+    [winner, round, tab] = gameIAvsRandom(nbCaillouxJ1, nbCaillouxJ2, choix, prediction)
     sommeRounds = sommeRounds + round
     if (winner == 1):
         nbVictoireIA = nbVictoireIA + 1
