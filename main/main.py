@@ -1,7 +1,14 @@
 from modules import *
 sys.path.append("./../games")
 from gameIAvsRandom import *
+import pickle
+from joblib import dump, load
 
+
+f = open("choix.pickle",'r+b')
+fi = open("prediction.pickle", 'r+b')
+choix = pickle.load(f);
+prediction = pickle.load(fi);
 
 print("Début de la simulation ..\n")
 

@@ -4,14 +4,14 @@ def playRoundBigBrain(predictionJ2,nbCaillouxJ1,nbCaillouxJ2,model):
      AutoPredict([predictionJ2,nbCaillouxJ1,nbCaillouxJ2],[1,1,1],model)[0];
 
 
-def choixBigBrain(nbCaillouxJ1, nbCaillouxJ2):
+def choixBigBrain(nbCaillouxJ1, nbCaillouxJ2, model):
      #faire décider le modèle
-     return 0
+     return AutoPredict([nbCaillouxJ1, nbCaillouxJ2],model);
 
 
-def predictionBigBrain(nbCaillouxJ1, nbCaillouxJ2, choixJ2, choixJ1):
+def predictionBigBrain(predictionJ2,nbCaillouxJ1, nbCaillouxJ2, choixJ1, model):
      #faire décider le modèle
-     return 0
+     return AutoPredict([predictionJ2,nbCaillouxJ1, nbCaillouxJ2,choixJ1],model);
 
 
 #print(result)
