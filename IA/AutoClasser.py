@@ -115,22 +115,15 @@ def AutoPredictChoix(data, model):
     #    data = sanitize(arrayIse(data));
     data = np.asarray(data);
     #data = arrayIse(data);
-    print(data);
     data = data[np.newaxis, :];
-    print(data);
-    print(data.shape);
     data.reshape(1,2);
-    print(data.shape);
     i = model.predict(data);
     print("done ",i);
     return i;
 
 def AutoPredictPrediction(data, model):
     data = np.asarray(data);
-    print(data);
-    print(data.shape);
-    data.reshape(1,2);
-    print(data.shape);
+    data = data[np.newaxis, :];
     i = model.predict(data);
     print("done ",i);
     return i;

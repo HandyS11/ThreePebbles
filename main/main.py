@@ -4,7 +4,8 @@ from gameIAvsRandom import *
 import pickle
 from joblib import dump, load
 import numpy as np
-
+import warnings
+warnings.filterwarnings("ignore")
 
 f = open("./../IA/choix.pickle",'r+b')
 fi = open("./../IA/prediction.pickle", 'r+b')
@@ -15,7 +16,7 @@ prediction = pickle.load(fi);
 print("Début de la simulation ..\n")
 
 
-nbGames = 1000
+nbGames = 3
 nbCaillouxJ1 = 3
 nbCaillouxJ2 = 3
 nbVictoireIA = 0

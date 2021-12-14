@@ -45,8 +45,7 @@ def manche(round, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
     predictionJ1 = 0;
 
     if (round%2 == 0):
-        while ():  
-            predictionJ1 = predictionBigBrain(nbCaillouxJ1, nbCaillouxJ2, -1, choixJ1, prediction)
+        predictionJ1 = predictionBigBrain(nbCaillouxJ1, nbCaillouxJ2, -1, choixJ1, prediction)
         if (predictionJ1 > (nbCaillouxJ1+nbCaillouxJ2)):
             predictionJ1 = (nbCaillouxJ1+nbCaillouxJ2)
             
