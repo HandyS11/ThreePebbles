@@ -9,7 +9,7 @@ def choixBigBrain(nbCaillouxJ1, nbCaillouxJ2, model):
      return AutoPredict([nbCaillouxJ1, nbCaillouxJ2],model);
 
 
-def predictionBigBrain(predictionJ2,nbCaillouxJ1, nbCaillouxJ2, choixJ1, model):
+def predictionBigBrain(nbCaillouxJ1, nbCaillouxJ2, predictionJ2,choixJ1, model):
      #faire décider le modèle
      return AutoPredict([predictionJ2,nbCaillouxJ1, nbCaillouxJ2,choixJ1],model);
 
