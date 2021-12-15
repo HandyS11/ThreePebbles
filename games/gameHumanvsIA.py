@@ -104,8 +104,8 @@ def manche(round, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
 
 if (True):
     
-    f = open("./IA/choix.pickle",'r+b')
-    fi = open("./IA/prediction.pickle", 'r+b')
+    f = open("./modeles/choixSVC.pickle",'r+b')
+    fi = open("./modeles/predictionSVC.pickle", 'r+b')
     choix = pickle.load(f);
     prediction = pickle.load(fi);
     

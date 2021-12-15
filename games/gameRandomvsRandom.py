@@ -8,7 +8,8 @@ import random
 ### ---------------------------------------------------------------- ###
 
 
-def gameRandomvsRandom(nbCaillouxJ1, nbCaillouxJ2):
+
+def gameRandomvsRandom(option, nbCaillouxJ1, nbCaillouxJ2):
 
     winner = 0          # gagnant de la partie
     winnerRound = 0     # gagnant du round courrant
@@ -18,8 +19,16 @@ def gameRandomvsRandom(nbCaillouxJ1, nbCaillouxJ2):
     while (winner == 0):    # boucle générale de jeu
 
         [winnerRound, nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2] = manche(round, nbCaillouxJ1, nbCaillouxJ2)     # lancement d'une manche et récupération des valeurs jouées
-        tabI = [winnerRound, nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2]                                          # ajout des valeurs de la manche dans un tableau temporaire
-        tab.append(tabI)                                                                                                                        # ajout du tableau temporaire (ligne) dans le tableau des logs
+        
+        if (option == 1):
+            tabI = [winnerRound, nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2]              # ajout des valeurs de la manche dans un tableau temporaire
+        elif (option == 2):
+            tabI = [winnerRound, predictionJ1, predictionJ2, nbCaillouxJ1, nbCaillouxJ2, choixJ1]                       # ajout des valeurs de la manche dans un tableau temporaire 
+        else:
+            print("Option de jeu incorecte ! ", option)     # sécurité
+            exit(1)
+            
+        tab.append(tabI)        # ajout du tableau temporaire (ligne) dans le tableau des logs
         
         round = round + 1       # incrémentation du nombre de round
 
@@ -29,6 +38,7 @@ def gameRandomvsRandom(nbCaillouxJ1, nbCaillouxJ2):
             winner = 2
 
     return [winner, round, tab]     # retour des valeurs permettant de décrire la partie
+
 
 
 def manche(round, nbCaillouxJ1, nbCaillouxJ2):
@@ -43,18 +53,22 @@ def manche(round, nbCaillouxJ1, nbCaillouxJ2):
     predictionJ1 = random.randint(0,(nbCaillouxJ1 + nbCaillouxJ2))      # définition de la prédiction du joueur 1
     predictionJ2 = random.randint(0,(nbCaillouxJ1 + nbCaillouxJ2))      # définition de la prédiction du joueur 2
 
-    if (round%2 == 0):       
-        while (predictionJ1 == predictionJ2):
-            predictionJ2 = random.randint(0,(nbCaillouxJ1 + nbCaillouxJ2))
 
-        if (predictionJ1 == nbCaillouxTotaux):
-            nbCaillouxJ1 = nbCaillouxJ1 - 1
-            winnerRound = 1
-        elif (predictionJ2 == nbCaillouxTotaux):
-            nbCaillouxJ2 = nbCaillouxJ2 - 1
-            winnerRound = 2
+    if (round%2 == 0):       # round pair 
+               
+        while (predictionJ1 == predictionJ2):                                   # les prédictions ne doivent pas être égales (mais on les a défini plus tôt pour gagner du temps)
+            predictionJ2 = random.randint(0,(nbCaillouxJ1 + nbCaillouxJ2))      # génération d'une prédiction possible (suivant les règles du jeu)
 
-    else:
+        if (predictionJ1 == nbCaillouxTotaux):      # si le joueur 1 devine le nombre de cailloux joués
+            nbCaillouxJ1 = nbCaillouxJ1 - 1         # celui-ci pose un cailloux
+            winnerRound = 1                         # et gagne le round
+            
+        elif (predictionJ2 == nbCaillouxTotaux):    # si le joueur 2 devine le nombre de cailloux joués
+            nbCaillouxJ2 = nbCaillouxJ2 - 1         # celui-ci pose un cailloux
+            winnerRound = 2                         # et gagne le round
+
+    else:       # round impair                      #Procédure similaire au round pair
+        
         while (predictionJ1 == predictionJ2):
             predictionJ1 = random.randint(0,(nbCaillouxJ1 + nbCaillouxJ2))
 
@@ -69,10 +83,11 @@ def manche(round, nbCaillouxJ1, nbCaillouxJ2):
 
 
 
-if (False):
+if (False):     # Test unitaire
     
     nbCaillouxJ1 = 3
     nbCaillouxJ2 = 3
-    [winner, round, tab] = gameBasic(nbCaillouxJ1, nbCaillouxJ2)
-    print(winner, round)
-    print(tab)
+    option = 1
+    [winner, round, tab] = gameRandomvsRandom(option, nbCaillouxJ1, nbCaillouxJ2)
+    print("Le gagnant est le joueur ", winner, " en ", round, "rounds.")
+    print("Logs de la partie :\n", tab)
