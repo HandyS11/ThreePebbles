@@ -1,0 +1,78 @@
+import random
+
+
+### ---------------------------------------------------------------- ###
+###                                                                  ###
+###              Version du jeu la plus basique qui soit             ###
+###                                                                  ###
+### ---------------------------------------------------------------- ###
+
+
+def gameRandomvsRandom(nbCaillouxJ1, nbCaillouxJ2):
+
+    winner = 0          # gagnant de la partie
+    winnerRound = 0     # gagnant du round courrant
+    round = 0           # nombre de round (s'incrémente durant la partie)
+    tab = []            # tableau des logs de la partie (se remplie durant cette dernière)
+
+    while (winner == 0):    # boucle générale de jeu
+
+        [winnerRound, nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2] = manche(round, nbCaillouxJ1, nbCaillouxJ2)     # lancement d'une manche et récupération des valeurs jouées
+        tabI = [winnerRound, nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2]                                          # ajout des valeurs de la manche dans un tableau temporaire
+        tab.append(tabI)                                                                                                                        # ajout du tableau temporaire (ligne) dans le tableau des logs
+        
+        round = round + 1       # incrémentation du nombre de round
+
+        if (nbCaillouxJ1 == 0):     # tests d'arrêt
+            winner = 1
+        elif (nbCaillouxJ2 == 0):
+            winner = 2
+
+    return [winner, round, tab]     # retour des valeurs permettant de décrire la partie
+
+
+def manche(round, nbCaillouxJ1, nbCaillouxJ2):
+
+    winnerRound = 0     # réinitialisation de la valeur (sécurité)
+    
+    choixJ1 = random.randint(0,nbCaillouxJ1)    # tirage du nombre de cailloux choisi par le joueur 1
+    choixJ2 = random.randint(0,nbCaillouxJ2)    # tirage du nombre de cailloux choisi par le joueur 2
+
+    nbCaillouxTotaux = choixJ1 + choixJ2        # calcule de la somme des cailloux choisi par les 2 joueurs (optimisation)
+
+    predictionJ1 = random.randint(0,(nbCaillouxJ1 + nbCaillouxJ2))      # définition de la prédiction du joueur 1
+    predictionJ2 = random.randint(0,(nbCaillouxJ1 + nbCaillouxJ2))      # définition de la prédiction du joueur 2
+
+    if (round%2 == 0):       
+        while (predictionJ1 == predictionJ2):
+            predictionJ2 = random.randint(0,(nbCaillouxJ1 + nbCaillouxJ2))
+
+        if (predictionJ1 == nbCaillouxTotaux):
+            nbCaillouxJ1 = nbCaillouxJ1 - 1
+            winnerRound = 1
+        elif (predictionJ2 == nbCaillouxTotaux):
+            nbCaillouxJ2 = nbCaillouxJ2 - 1
+            winnerRound = 2
+
+    else:
+        while (predictionJ1 == predictionJ2):
+            predictionJ1 = random.randint(0,(nbCaillouxJ1 + nbCaillouxJ2))
+
+        if (predictionJ2 == nbCaillouxTotaux):
+            nbCaillouxJ2 = nbCaillouxJ2 - 1
+            winnerRound = 2
+        elif (predictionJ1 == nbCaillouxTotaux):
+            nbCaillouxJ1 = nbCaillouxJ1 - 1
+            winnerRound = 1
+
+    return [winnerRound ,nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2]
+
+
+
+if (False):
+    
+    nbCaillouxJ1 = 3
+    nbCaillouxJ2 = 3
+    [winner, round, tab] = gameBasic(nbCaillouxJ1, nbCaillouxJ2)
+    print(winner, round)
+    print(tab)

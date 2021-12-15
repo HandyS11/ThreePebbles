@@ -1,36 +1,23 @@
 from modules import *
 sys.path.append("./games")
-from gameBasic import *
-from gameRandom import *
+from gameRandomvsRandom import *
 
 
 
-def generateData(option, nbLignes, nbCaillouxJ1, nbCaillouxJ2):
+def generateData(nbLignes, nbCaillouxJ1, nbCaillouxJ2):
 
     t1 = time.time()
 
-    with open('data.csv', 'w', newline='') as csvfile:
-        spamwriter = csv.writer(csvfile, delimiter= ' '
-        , quotechar='|', quoting=csv.QUOTE_MINIMAL)
+    with open('data.csv', 'w', newline='') as csvfile: 
+        spamwriter = csv.writer(csvfile, delimiter= ' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
 
-        if (option == 1):
-            spamwriter.writerow(['winnerRound', 'predictionJ1', 'predictionJ2', 'nbCaillouxJ1', "nbCaillouxJ2", "choixJ1"])
+        spamwriter.writerow(['winnerRound', 'predictionJ1', 'predictionJ2', 'nbCaillouxJ1', "nbCaillouxJ2", "choixJ1"])
 
-            for i in range(0, nbLignes):    
-                [winner, round, tab] = gameWithIA(1, nbCaillouxJ1, nbCaillouxJ2)
-                tab = np.asarray(tab)
-                for i in range(0, tab.shape[0]):        
-                    spamwriter.writerow(tab[i])
-                    
-        elif (option == 2):
-            spamwriter.writerow(['Winner', 'Round', 'Data'])
-
-            for i in range(0, nbLignes):    
-                [winner, round, tab] = gameBasic(nbCaillouxJ1, nbCaillouxJ2)
-                tab = np.asarray(tab)
-                for i in range(0, tab.shape[0]):        
-                    spamwriter.writerow(tab[i])
-            
+        for i in range(0, nbLignes):    
+            [winner, round, tab] = gameRandomvsRandom(1, nbCaillouxJ1, nbCaillouxJ2)
+            tab = np.asarray(tab)
+            for i in range(0, tab.shape[0]):        
+                spamwriter.writerow(tab[i])
             
     t2 = time.time()
     print("Length: ", t2 - t1, "s\n")
@@ -38,10 +25,10 @@ def generateData(option, nbLignes, nbCaillouxJ1, nbCaillouxJ2):
 
 if (True):
     
-    nbLignes = 10000
+    nbParties = 10000
     nbCaillouxJ1 = 3
     nbCaillouxJ2 = 3
     
     print("Beginnig generation.\n")
-    generateData(1, nbLignes, nbCaillouxJ1, nbCaillouxJ2)
+    generateData(nbParties, nbCaillouxJ1, nbCaillouxJ2)
     print("Generation complete.")
