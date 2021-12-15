@@ -41,7 +41,6 @@ def manche(round, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
     nbCaillouxTotaux = choixJ1 + choixJ2
 
     predictionJ2 = random.randint(0,(nbCaillouxJ1 + nbCaillouxJ2))
-
     predictionJ1 = 0;
 
     if (round%2 == 0):
