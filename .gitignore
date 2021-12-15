@@ -2,5 +2,7 @@
 ./IA/__pycache__/
 ./main/__pycache__/
 ./.vscode/
+.vscode/
+*.json
 *.csv
 *.pyc
