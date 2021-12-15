@@ -4,6 +4,11 @@ from joblib import dump, load
 
 model = train.trainModel()
 
+d = open("choix.pickle",'w')
+d.close();
+d = open("prediction.pickle",'w')
+d.close();
+
 f = open("choix.pickle",'r+b')
 s1 = pickle.dump(model[0], f)
 

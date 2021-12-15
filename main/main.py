@@ -6,11 +6,33 @@ from gameIAvsRandom import *
 import warnings
 warnings.filterwarnings("ignore")
 
+model = 2;
 
-f = open("./IA/choix.pickle",'r+b')
-fi = open("./IA/prediction.pickle", 'r+b')
+f = 0
+fi = 0
+
+
+if(model == 0):
+    f = open("./modeles/choixSVC.pickle",'r+b')
+    fi = open("./modeles/predictionSVC.pickle", 'r+b')
+    print("Mode SVC")
+elif(model == 1):
+    f = open("./modeles/choixKNN.pickle",'r+b')
+    fi = open("./modeles/predictionKNN.pickle", 'r+b')
+    print("Mode KNN")
+else:
+    f = open("./modeles/choixArbre.pickle",'r+b')
+    fi = open("./modeles/predictionArbre.pickle", 'r+b')
+    print("Mode Arbre de décision")
+
+
 choix = pickle.load(f);
 prediction = pickle.load(fi);
+
+if(model == 2):
+    printTree(prediction);
+if(model == 0):
+    printSVC(0);
 
 
 print("Début de la simulation ..\n")
