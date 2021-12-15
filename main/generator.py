@@ -1,5 +1,5 @@
 from modules import *
-sys.path.append("./../games")
+sys.path.append("./games")
 from gameBasic import *
 from gameRandom import *
 

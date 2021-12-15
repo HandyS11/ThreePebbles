@@ -6,7 +6,7 @@ from gameIAvsRandom import *
 import warnings
 warnings.filterwarnings("ignore")
 
-model = 2;
+model = 0;
 
 f = 0
 fi = 0
@@ -29,10 +29,6 @@ else:
 choix = pickle.load(f);
 prediction = pickle.load(fi);
 
-if(model == 2):
-    printTree(prediction);
-if(model == 0):
-    printSVC(0);
 
 
 print("Début de la simulation ..\n")

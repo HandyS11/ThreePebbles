@@ -80,7 +80,6 @@ def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaAr
         mostAccurate = clfDT
         print("Decision tree choosen : ",accDT," accuracy")
         print(DTconf);
-        printTree(mostAccurate)
   
     elif (accKNN >= accDT) and (accKNN >= accSVC):
         mostAccurate = clfKNN
