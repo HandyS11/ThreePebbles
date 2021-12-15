@@ -1,5 +1,7 @@
 from train import *
 import numpy as np
+sys.path.append("./objects")
+from player import *
 
 
 def choixBigBrain(nbCaillouxJ1, nbCaillouxJ2, model):

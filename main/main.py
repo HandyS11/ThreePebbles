@@ -1,3 +1,4 @@
+from games.gameIAvsRandom import gameIAvsRandom
 from modules import *
 sys.path.append("./games")
 from gameIAvsRandom import *
