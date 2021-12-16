@@ -17,8 +17,15 @@ def generateData(option, nbParties, nbCaillouxJ1, nbCaillouxJ2):
 
     with open('data.csv', 'w', newline='') as csvfile:      # ouverture/création d'un fichier .csv
         
-        spamwriter = csv.writer(csvfile, delimiter= ' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)                          # options du writer
-        spamwriter.writerow(['winnerRound', 'predictionJ1', 'predictionJ2', 'nbCaillouxJ1', "nbCaillouxJ2", "choixJ1"])     # nomage des colonnes
+        spamwriter = csv.writer(csvfile, delimiter= ' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)          # options du writer
+        
+        if (option == 1):
+            spamwriter.writerow(['winnerRound', 'nbCaillouxJ1', 'nbCaillouxJ2', 'choixJ1', 'choixJ2', 'predictionJ1', 'predictionJ2'])     # nomage des colonnes
+        elif (option ==2):
+            spamwriter.writerow(['nbCaillouxJ1', "nbCaillouxJ2", "choixJ1", 'predictionJ1', 'predictionJ2'])                                # nomage des colonnes
+        else:
+            print("Option impossible !")
+            exit(1)
 
         for i in range(0, nbParties):            # Pour le nombre de parties choisi
             [winner, round, tab] = gameRandomvsRandom(option, nbCaillouxJ1, nbCaillouxJ2)   # faire un partie et récupérer les données de cette dernière
@@ -32,10 +39,10 @@ def generateData(option, nbParties, nbCaillouxJ1, nbCaillouxJ2):
 
 if (True):      # appel à lui même (on le lance directement)
     
-    nbParties = 10000   # nombre de parties jouées
+    nbParties = 1000    # nombre de parties jouées
     nbCaillouxJ1 = 3    # nombre de cailloux du joueur 1
     nbCaillouxJ2 = 3    # nombre de cailloux du joueur 2
-    option = 1          # option pour choisir la forme des données retournées 
+    option = 2          # option pour choisir la forme des données retournées 
     
     print("Beginnig generation.\n")
     generateData(option, nbParties, nbCaillouxJ1, nbCaillouxJ2)     # lancement de la génération des données

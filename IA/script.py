@@ -1,6 +1,8 @@
+import sys
 import train
-import pickle
-from joblib import dump, load
+sys.path.append("./main")
+from modules import *
+
 
 model = train.trainModel()
 

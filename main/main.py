@@ -6,6 +6,14 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
+### ---------------------------------------------------------------- ###
+###                                                                  ###
+###                        Programme principal                       ###
+###                                                                  ###
+### ---------------------------------------------------------------- ###
+
+
+
 model = 0;      # choix du model de jeu pour l'IA
 f = 0           # modele (choix)
 fi = 0          # modele (prediction)

@@ -19,15 +19,19 @@ def gameRandomvsRandom(option, nbCaillouxJ1, nbCaillouxJ2):
     while (winner == 0):    # boucle générale de jeu
 
         [winnerRound, nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2] = manche(round, nbCaillouxJ1, nbCaillouxJ2)     # lancement d'une manche et récupération des valeurs jouées
+        tabI = []
         
         if (option == 1):
             tabI = [winnerRound, nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2]              # ajout des valeurs de la manche dans un tableau temporaire
         elif (option == 2):
-            tabI = [winnerRound, predictionJ1, predictionJ2, nbCaillouxJ1, nbCaillouxJ2, choixJ1]                       # ajout des valeurs de la manche dans un tableau temporaire 
+            if (winnerRound == 1):
+                tabI = [predictionJ1, predictionJ2, nbCaillouxJ1, nbCaillouxJ2, choixJ1]                       # ajout des valeurs de la manche dans un tableau temporaire 
+            else:
+                tabI = [predictionJ1, predictionJ2, nbCaillouxJ1, nbCaillouxJ2, choixJ2]                       # ajout des valeurs de la manche dans un tableau temporaire 
         else:
             print("Option de jeu incorecte ! ", option)     # sécurité
             exit(1)
-            
+          
         tab.append(tabI)        # ajout du tableau temporaire (ligne) dans le tableau des logs
         
         round = round + 1       # incrémentation du nombre de round
