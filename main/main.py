@@ -1,16 +1,14 @@
-from games.gameIAvsRandom import gameIAvsRandom
 from modules import *
 sys.path.append("./games")
 from gameIAvsRandom import *
 
-
 import warnings
 warnings.filterwarnings("ignore")
 
-model = 0;
 
-f = 0
-fi = 0
+model = 0;      # choix du model de jeu pour l'IA
+f = 0           # modele (choix)
+fi = 0          # modele (prediction)
 
 
 if(model == 0):
@@ -27,9 +25,8 @@ else:
     print("Mode Arbre de décision")
 
 
-choix = pickle.load(f);
-prediction = pickle.load(fi);
-
+choix = pickle.load(f);         # chargement du model de choix
+prediction = pickle.load(fi);   # chargement du model de prediction
 
 
 print("Début de la simulation ..\n")
@@ -49,6 +46,7 @@ for i in range(0, nbGames):
         nbVictoireIA = nbVictoireIA + 1
 
 t2 = time.time()
+
 print("L'IA a gagné ", nbVictoireIA, " partie sur ", nbGames)
 print("Soit un pourcentage de victoire de ", nbVictoireIA/nbGames*100, "%")
 print("La durée moyenne des partie est de ", sommeRounds/nbGames, " rounds.")
