@@ -102,12 +102,11 @@ def manche(round, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
     return [nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2]
 
 
-if (True):
-    
+if (True):    
     f = open("./modeles/choixSVC.pickle",'r+b')
     fi = open("./modeles/predictionSVC.pickle", 'r+b')
-    choix = pickle.load(f);
-    prediction = pickle.load(fi);
+    choix = pickle.load(f)
+    prediction = pickle.load(fi)
     
     nbCaillouxJ1 = 3
     nbCaillouxJ2 = 3

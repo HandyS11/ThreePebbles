@@ -1,6 +1,7 @@
 from train import *
 import random
 import sys
+
 class AIplayer:
     def __init__(self, model, cailloux = 3) -> None:
         self.model = model
@@ -9,13 +10,13 @@ class AIplayer:
         self.choixCailloux = 0
 
     def choisir(self, nbCaillouxJ2: int)->int:
-        self.choixCailloux = AutoPredictChoix([self.cailloux, nbCaillouxJ2],self.model);
+        self.choixCailloux = AutoPredictChoix([self.cailloux, nbCaillouxJ2],self.model)
         if(self.choixCailloux > self.cailloux):
             self.choixCailloux = self.cailloux
-        return self.choixCailloux;
+        return self.choixCailloux
 
     def predire(self)->int:
-        self.prediction = AutoPredictPrediction([predictionJ2,self.cailloux, nbCaillouxJ2,self.choixCailloux],self.model);
+        self.prediction = AutoPredictPrediction([predictionJ2,self.cailloux, nbCaillouxJ2,self.choixCailloux],self.model)
         return self.prediction
 #--------------------------------------------------------------------------------------------------------------------------
 class randPlayer:
@@ -26,7 +27,7 @@ class randPlayer:
 
     def choisir(self)-> int:
         self.choixCailloux = random.randint(0,self.cailloux)
-        return self.choixCailloux;
+        return self.choixCailloux
 
     def predire(self, nbCaillouxAdversaire: int)-> int:
         self.prediction = random.randint(0,(self.cailloux + nbCaillouxAdversaire))
@@ -41,7 +42,7 @@ class truePlayer:
     def choisir(self)->int:
         self.choixCailloux = int(input("Combien de cailloux mettez vous en jeu : "))
 
-        return self.choixCailloux;
+        return self.choixCailloux
 
     def predire(self)->int:
         self.prediction = int(input("Quelle est votre prédiction : "))

@@ -6,12 +6,12 @@ from player import *
 
 def choixBigBrain(nbCaillouxJ1, nbCaillouxJ2, model):
      #faire décider le modèle
-     return AutoPredictChoix([nbCaillouxJ1, nbCaillouxJ2],model);
+     return AutoPredictChoix([nbCaillouxJ1, nbCaillouxJ2],model)
 
 
 def predictionBigBrain(nbCaillouxJ1, nbCaillouxJ2, predictionJ2,choixJ1, model):
      #faire décider le modèle
-     return AutoPredictPrediction([predictionJ2,nbCaillouxJ1, nbCaillouxJ2,choixJ1],model);
+     return AutoPredictPrediction([predictionJ2,nbCaillouxJ1, nbCaillouxJ2,choixJ1],model)
 
 
 #print(result)

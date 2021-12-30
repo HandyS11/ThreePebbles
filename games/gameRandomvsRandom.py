@@ -87,8 +87,7 @@ def manche(round, nbCaillouxJ1, nbCaillouxJ2):
 
 
 
-if (False):     # Test unitaire
-    
+if (False):     # Test unitaire   
     nbCaillouxJ1 = 3
     nbCaillouxJ2 = 3
     option = 1

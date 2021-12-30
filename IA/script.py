@@ -7,9 +7,9 @@ from modules import *
 model = train.trainModel()
 
 d = open("choix.pickle",'w')
-d.close();
+d.close()
 d = open("prediction.pickle",'w')
-d.close();
+d.close()
 
 f = open("choix.pickle",'r+b')
 s1 = pickle.dump(model[0], f)

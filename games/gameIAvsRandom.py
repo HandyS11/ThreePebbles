@@ -8,7 +8,7 @@ def gameIAvsRandom(nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
 
     winner = 0
     winnerRound = 0
-    predictionJ1 = 0;
+    predictionJ1 = 0
     round = 0
     tab = []
 
@@ -41,7 +41,7 @@ def manche(round, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
     nbCaillouxTotaux = choixJ1 + choixJ2
 
     predictionJ2 = random.randint(0,(nbCaillouxJ1 + nbCaillouxJ2))
-    predictionJ1 = 0;
+    predictionJ1 = 0
 
     if (round%2 == 0):
         predictionJ1 = predictionBigBrain(nbCaillouxJ1, nbCaillouxJ2, -1, choixJ1, prediction)

@@ -9,11 +9,11 @@ def gameIAvsRandom(model):
 
     winner = 0
     winnerRound = 0
-    predictionJ1 = 0;
+    predictionJ1 = 0
     round = 0
     tab = []
-    IA = AIplayer(model);
-    rando = randPlayer();
+    IA = AIplayer(model)
+    rando = randPlayer()
 
     while (winner == 0):
 
@@ -37,8 +37,8 @@ def manche(round, rando, IA):
     
     nbCaillouxParie = IA.choisir(rando.cailloux) + rando.choisir()
 
-    predictionJ2 = rando.predire(IA.cailloux);
-    predictionJ1 = 0;
+    predictionJ2 = rando.predire(IA.cailloux)
+    predictionJ1 = 0
 
     if (round%2 == 0):
         predictionJ1 = predictionBigBrain(nbCaillouxJ1, nbCaillouxJ2, -1, choixJ1, prediction)

@@ -5,35 +5,35 @@ from modules import *
 
 def arrayIse(notArr):
     Arr = np.asarray(notArr)
-    Arr = Arr[:, np.newaxis];
-    return Arr;
+    Arr = Arr[:, np.newaxis]
+    return Arr
 
 def sanitize(arr):
 
     for key,value in enumerate(arr):
         if(ma.isnan(value)):
-            arr[key] = 0;
-    return arr;
+            arr[key] = 0
+    return arr
 
 def sanitizeSex(arr):
 
     for key,value in enumerate(arr):
         if(value == "male"):
-            arr[key] = 1;
+            arr[key] = 1
         else:
-            arr[key] = 0;
-    return arr;
+            arr[key] = 0
+    return arr
 
 def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaArg):
-    X = np.asarray(X);
+    X = np.asarray(X)
     X = X.reshape((X.shape[1],X.shape[0]))
-    y = np.asarray(y);
+    y = np.asarray(y)
 
-    print(X);
+    print(X)
     if(X.shape[0] == 1):
-        X = sanitize(arrayIse(X));
+        X = sanitize(arrayIse(X))
 
-    y = sanitize(y);
+    y = sanitize(y)
 
     from sklearn.model_selection import train_test_split
     if(trainPerc > 1):
@@ -41,8 +41,6 @@ def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaAr
     Xtrain, Xtest, ytrain, ytest = train_test_split(X,y,test_size=trainPerc,random_state=0)
 
     #--------------------------------------------------------------------------
-    from sklearn.datasets import load_iris
-    from sklearn import tree
     from sklearn.tree import DecisionTreeClassifier
 
     Arbre_decision = DecisionTreeClassifier(random_state=0, max_depth=depthArg)
@@ -50,7 +48,7 @@ def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaAr
     
     from sklearn.metrics import accuracy_score
     ypredit = clfDT.predict(Xtest)
-    accDT = accuracy_score(ytest, ypredit);
+    accDT = accuracy_score(ytest, ypredit)
     
     from sklearn import metrics
     DTconf = metrics.confusion_matrix(ytest, ypredit)
@@ -71,7 +69,7 @@ def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaAr
     
     from sklearn.metrics import accuracy_score
     ypredit = clfSVC.predict(Xtest)
-    accSVC = accuracy_score(ytest,ypredit);
+    accSVC = accuracy_score(ytest,ypredit)
     
     ypredit = clfSVC.predict(Xtest)
     SVCConf = metrics.confusion_matrix(ytest,ypredit)
@@ -79,55 +77,47 @@ def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaAr
     if (accDT >= accKNN) and (accDT >= accSVC):
         mostAccurate = clfDT
         print("Decision tree choosen : ",accDT," accuracy")
-        print(DTconf);
+        print(DTconf)
   
     elif (accKNN >= accDT) and (accKNN >= accSVC):
         mostAccurate = clfKNN
         print("KNN choosen : ",accKNN," accuracy")
-        print(KNNConf);
+        print(KNNConf)
     else:
         mostAccurate = clfSVC
         print("SVC choosen : ",accSVC," accuracy")
-        print(SVCConf);
+        print(SVCConf)
 
-    return mostAccurate;
+    return mostAccurate
 
 def AutoPredict(data, model):
-    #data = np.asarray(data);
-    #if(data.shape[0] == 1):
-    #    data = sanitize(arrayIse(data));
-    data = np.asarray(data);
-    #data = arrayIse(data);
-    print(data);
-    data = data[np.newaxis, :];
-    print(data);
-    print(data.shape);
-    data.reshape(1,2);
-    print(data.shape);
-    i = model.predict(data);
-    print("done ",i);
-    return i;
+    data = np.asarray(data)
+    print(data)
+    data = data[np.newaxis, :]
+    print(data)
+    print(data.shape)
+    data.reshape(1,2)
+    print(data.shape)
+    i = model.predict(data)
+    print("done ",i)
+    return i
 
 def AutoPredictChoix(data, model):
-    #data = np.asarray(data);
-    #if(data.shape[0] == 1):
-    #    data = sanitize(arrayIse(data));
-    data = np.asarray(data);
-    #data = arrayIse(data);
-    data = data[np.newaxis, :];
-    data.reshape(1,2);
-    i = model.predict(data);
-    return i;
+    data = np.asarray(data)
+    data = data[np.newaxis, :]
+    data.reshape(1,2)
+    i = model.predict(data)
+    return i
 
 def AutoPredictPrediction(data, model):
-    data = np.asarray(data);
-    data = data[np.newaxis, :];
-    i = model.predict(data);
-    return i;
+    data = np.asarray(data)
+    data = data[np.newaxis, :]
+    i = model.predict(data)
+    return i
 
 def printTree(model):
     tree.plot_tree(model)
-    plt.show();
+    plt.show()
 
 def printSVC(model):
 
@@ -135,7 +125,7 @@ def printSVC(model):
     import matplotlib.pyplot as plt
     from sklearn import svm, datasets
 
-        # import some data to play with
+    # import some data to play with
     iris = datasets.load_iris()
     X = iris.data[:, :2]  # we only take the first two features. We could
                           # avoid this ugly slicing by using a two-dim dataset
