@@ -56,7 +56,11 @@ for i in range(0, nbGames):
 
 t2 = time.time()
 
-print("L'IA a gagné ", nbVictoireIA, " partie sur ", nbGames)
-print("Soit un pourcentage de victoire de ", nbVictoireIA/nbGames*100, "%")
-print("La durée moyenne des partie est de ", sommeRounds/nbGames, " rounds.")
-print("La simulation a durée ", t2-t1, "secondes.")
+tempsS = t2 - t1
+dureeM = sommeRounds/nbGames
+pourcentageV = nbVictoireIA/nbGames*100
+
+print("L'IA a gagné ", nbVictoireIA, " partie sur", nbGames)
+print("Soit un pourcentage de victoire de", pourcentageV, "%")
+print("La durée moyenne des partie est de", dureeM, "rounds.")
+print("La simulation a durée", tempsS, "secondes.\n")

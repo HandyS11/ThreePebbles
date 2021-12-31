@@ -10,7 +10,6 @@
 Le jeu des **3 cailloux** est un célèbre jeu français comprehensible par tous.
 Il consiste dans sa forme la plus simple en une confrontation de 2 joueurs possèdant chacun 3 cailloux.
 La partie se déroule sous forme de tour ayant le même fonctionnement hormi le fait que la personne qui *prédit* en premier alterne à chacun des tours.
-  
 
 - Au début de la partie, on dire au sort le joueur qui commencera.
 - Les 2 joueurs choisissent sans montrer à leur adversaire un nombre de cailloux qu'ils mettent dans leur main. (Ce nombre doit être comprit entre 0 et le nombre de cailloux que possède le joueur.)
@@ -48,3 +47,17 @@ Ensuite :
 `python3 ./IA/script.py`
 
 >Ce fichier permet de "générer" les 2 IA qui serviront à jouer au jeu.
+>Veuillez ensuite déplacer les 2 modèles créés dans le dossier `modeles` ou exécuter la commande dans ce dernier en changement le chemin relatif.
+
+## Jouez vous même au jeu
+
+Vous avez 2 choix possibles :
+
+- Jouer contre un *joueur aléatoire* (qui joue de manière aléatoire).
+- Jouer contre l'IA (qui prend les 2 modèles spécifiés dans `gameHumanvsIA`).
+
+Pour cela :
+
+`python3 ./games/gameHumanvsRandom.py`
+ou
+`python3 ./games/gameHumanvsIA.py`
