@@ -3,6 +3,7 @@ import sys
 sys.path.append("./IA")
 from train import *
 
+
 class AIplayer:
     def __init__(self, ChoixModel, PredictionModel,cailloux:int = 3) -> None:
         self.ChoixModel = ChoixModel

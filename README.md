@@ -24,6 +24,30 @@ La partie se déroule sous forme de tour ayant le même fonctionnement hormi le 
 >A noter qu'une partie pourrait dans l'absolu avoir un nombre illimité de joueurs et de cailloux au départ.
 
 
+## Préparation
+
+Pour pouvoir utiliser les différents programme, vous allez devoir installer plusieurs modules.
+Ceux-ci sont obligatoires afin que le code puisse s'executer.
+Pour cela, veuillez les installer grace à **pip** (par exemple).
+
+Liste les bibliotèques :
+
+- csv
+- joblib
+- math
+- matplotli
+- numpy
+- pandas
+- pickle
+- random
+- sklearn
+- sys
+- time
+- warnings
+
+>Tous les modules utilisés sont trouvables dans `./main/modules.py`
+
+
 ## Utilisation du programme
 
 Afin d'utiliser les différents programmes, veuiller vous munir d'une version de **Python3**.
@@ -48,6 +72,7 @@ Ensuite :
 
 >Ce fichier permet de "générer" les 2 IA qui serviront à jouer au jeu.
 >Veuillez ensuite déplacer les 2 modèles créés dans le dossier `modeles` ou exécuter la commande dans ce dernier en changement le chemin relatif.
+
 
 ## Jouez vous même au jeu
 

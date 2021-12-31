@@ -1,19 +1,25 @@
+import csv
+import math as ma
+import matplotlib.pyplot as plt 
 import numpy as np 
 import pandas as pd
-import matplotlib.pyplot as plt 
-import math as ma
-import time
-import csv
+import pickle
 import random
 import sys
+import time
+import warnings
 
-
-import pickle
+import joblib
 from joblib import dump, load
 
 import sklearn as sk 
+from sklearn import datasets
+from sklearn import metrics
+from sklearn import svm
+from sklearn import tree
 
 from sklearn.datasets import load_digits
+from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
-from sklearn import metrics
-from sklearn import tree
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.tree import DecisionTreeClassifier

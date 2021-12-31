@@ -2,7 +2,6 @@ from modules import *
 sys.path.append("./games")
 #from gameIAvsRandom import *
 from gameIAvsRandomObjet import *
-import warnings
 warnings.filterwarnings("ignore")
 
 

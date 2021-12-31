@@ -35,25 +35,20 @@ def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaAr
 
     y = sanitize(y)
 
-    from sklearn.model_selection import train_test_split
     if(trainPerc > 1):
         trainPerc = 1
     Xtrain, Xtest, ytrain, ytest = train_test_split(X,y,test_size=trainPerc,random_state=0)
 
     #--------------------------------------------------------------------------
-    from sklearn.tree import DecisionTreeClassifier
 
     Arbre_decision = DecisionTreeClassifier(random_state=0, max_depth=depthArg)
     clfDT = Arbre_decision.fit(Xtrain,ytrain)
     
-    from sklearn.metrics import accuracy_score
     ypredit = clfDT.predict(Xtest)
     accDT = accuracy_score(ytest, ypredit)
     
-    from sklearn import metrics
     DTconf = metrics.confusion_matrix(ytest, ypredit)
     #-------------------------------------------------------------------------
-    from sklearn.neighbors import KNeighborsClassifier
     
     KNN = KNeighborsClassifier()
     clfKNN = KNN.fit(Xtrain, ytrain)
@@ -62,12 +57,10 @@ def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaAr
     accKNN = accuracy_score(ytest, ypredit)
     KNNConf = metrics.confusion_matrix(ytest, ypredit)
     #-------------------------------------------------------------------------
-    from sklearn import svm
     
     clfSVC = svm.SVC(gamma = gammaArg)
     clfSVC.fit(Xtrain,ytrain)
     
-    from sklearn.metrics import accuracy_score
     ypredit = clfSVC.predict(Xtest)
     accSVC = accuracy_score(ytest,ypredit)
     
@@ -120,10 +113,6 @@ def printTree(model):
     plt.show()
 
 def printSVC(model):
-
-    import numpy as np
-    import matplotlib.pyplot as plt
-    from sklearn import svm, datasets
 
     # import some data to play with
     iris = datasets.load_iris()
