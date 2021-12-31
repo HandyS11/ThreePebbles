@@ -5,7 +5,7 @@ from gameRandomvsRandom import *
 
 ### ---------------------------------------------------------------- ###
 ###                                                                  ###
-###                Générateur de données d'entrainement              ###
+###                Generateur de donnees d'entrainement              ###
 ###                                                                  ###
 ### ---------------------------------------------------------------- ###
 
@@ -13,9 +13,9 @@ from gameRandomvsRandom import *
 
 def generateData(option, nbParties, nbCaillouxJ1, nbCaillouxJ2):
 
-    t1 = time.time()    # temps exact avant le lancement de la génération
+    t1 = time.time()    # temps exact avant le lancement de la generation
 
-    with open('data.csv', 'w', newline='') as csvfile:      # ouverture/création d'un fichier .csv
+    with open('data.csv', 'w', newline='') as csvfile:      # ouverture/creation d'un fichier .csv
         
         spamwriter = csv.writer(csvfile, delimiter= ' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)          # options du writer
         
@@ -28,22 +28,22 @@ def generateData(option, nbParties, nbCaillouxJ1, nbCaillouxJ2):
             exit(1)
 
         for i in range(0, nbParties):            # Pour le nombre de parties choisi
-            [winner, round, tab] = gameRandomvsRandom(option, nbCaillouxJ1, nbCaillouxJ2)   # faire un partie et récupérer les données de cette dernière
+            [winner, round, tab] = gameRandomvsRandom(option, nbCaillouxJ1, nbCaillouxJ2)   # faire un partie et recuperer les donnees de cette derniere
             tab = np.asarray(tab)               # transformation du tableau avec numpy
-            for i in range(0, tab.shape[0]):    # pour tous les éléments du tableau
-                spamwriter.writerow(tab[i])     # les écrire indépendament (lignes différentes)
+            for i in range(0, tab.shape[0]):    # pour tous les elements du tableau
+                spamwriter.writerow(tab[i])     # les ecrire independament (lignes differentes)
             
-    t2 = time.time()    # temps exact après l'exécution de la génération
-    print("Length: ", t2 - t1, "s\n")   # calcul de la durée d'exécution
+    t2 = time.time()    # temps exact apres l'execution de la generation
+    print("Length: ", t2 - t1, "s\n")   # calcul de la duree d'execution
 
 
-if (True):      # appel à lui même (on le lance directement)
+if (True):      # appel a lui meme (on le lance directement)
     
-    nbParties = 1000    # nombre de parties jouées
+    nbParties = 1000    # nombre de parties jouees
     nbCaillouxJ1 = 3    # nombre de cailloux du joueur 1
     nbCaillouxJ2 = 3    # nombre de cailloux du joueur 2
-    option = 2          # option pour choisir la forme des données retournées 
+    option = 2          # option pour choisir la forme des donnees retournees 
     
     print("Beginnig generation.\n")
-    generateData(option, nbParties, nbCaillouxJ1, nbCaillouxJ2)     # lancement de la génération des données
+    generateData(option, nbParties, nbCaillouxJ1, nbCaillouxJ2)     # lancement de la generation des donnees
     print("Generation complete.")

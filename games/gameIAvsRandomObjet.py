@@ -1,75 +1,62 @@
 import random
 import sys
-from objects.player import AIplayer, randPlayer
+from types import new_class
+sys.path.append("./objects")
+from player import AIplayer, randPlayer
 sys.path.append("./IA")
 from play import *
 
 
-def gameIAvsRandom(model):
+def gameIAvsRandomObjet(nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
 
     winner = 0
     winnerRound = 0
-    predictionJ1 = 0
     round = 0
     tab = []
-    IA = AIplayer(model)
-    rando = randPlayer()
+    ia = AIplayer(choix,prediction,nbCaillouxJ1)
+    rando = randPlayer(nbCaillouxJ2)
 
     while (winner == 0):
-
-        [winnerRound] = manche(round, rando, IA)
-        tabI = [winnerRound, IA.cailloux, rando.cailloux, IA.choixCailloux, rando.choixCailloux, IA.prediction, rando.prediction]
+        [winnerRound, ia, rando] = mancheObj(round, rando, ia)
+        tabI = [winnerRound, ia.cailloux, rando.cailloux, ia.choixCailloux, rando.choixCailloux, ia.prediction, rando.prediction]
         tab.append(tabI)
-        
         round += 1
 
-        if (IA.cailloux == 0):
+        if (ia.cailloux <= 0):
             winner = 1
-        elif (rando.cailloux == 0):
+        elif (rando.cailloux <= 0):
             winner = 2
 
+    del ia
+    del rando
     return [winner, round, tab]
 
 
-def manche(round, rando, IA):
-
+def mancheObj(round, rando, ia):   #rando = J2
     winnerRound = 0
-    
-    nbCaillouxParie = IA.choisir(rando.cailloux) + rando.choisir()
 
-    predictionJ2 = rando.predire(IA.cailloux)
-    predictionJ1 = 0
+    ia.choisir(rando.cailloux)
+
+    rando.choisir()
+    rando.predire(ia.cailloux)
+    
 
     if (round%2 == 0):
-        predictionJ1 = predictionBigBrain(nbCaillouxJ1, nbCaillouxJ2, -1, choixJ1, prediction)
-        if (predictionJ1 > (nbCaillouxJ1+nbCaillouxJ2)):
-            predictionJ1 = (nbCaillouxJ1+nbCaillouxJ2)
-            
-        while (predictionJ1 == predictionJ2):
-            predictionJ2 = random.randint(0,(nbCaillouxJ1 + nbCaillouxJ2))
-
-        if (predictionJ1 == nbCaillouxParie):
-            nbCaillouxJ1 = nbCaillouxJ1 - 1
-            winnerRound = 1
-        elif (predictionJ2 == nbCaillouxParie):
-            nbCaillouxJ2 = nbCaillouxJ2 - 1
-            winnerRound = 2
+        ia.predire(rando.prediction)
+        ia.clipPred(rando.cailloux)
 
     else:
-        predictionJ1 = predictionJ2
-        predictionJ1 = predictionBigBrain(nbCaillouxJ1, nbCaillouxJ2, predictionJ2, choixJ1, prediction)
-        if (predictionJ1 > (nbCaillouxJ1+nbCaillouxJ2)):
-            predictionJ1 = (nbCaillouxJ1+nbCaillouxJ2)
+        ia.predire(rando.cailloux)
+        ia.clipPred(rando.cailloux) #limite la prédiction aux maximum
+
+    while (ia.prediction == rando.prediction):  #on empêche les situations où on ne peut pas décider du vainqueur
+        rando.predire(ia.cailloux)
             
-        if (predictionJ2 == nbCaillouxParie):
-            nbCaillouxJ2 = nbCaillouxJ2 - 1
-            winnerRound = 2
-        elif (predictionJ1 == nbCaillouxParie):
-            nbCaillouxJ1 = nbCaillouxJ1 - 1
-            winnerRound = 1
+    if (rando.prediction == (rando.choixCailloux + ia.choixCailloux)):
+        rando.cailloux = rando.cailloux - 1
+        winnerRound = 2
+    elif (ia.prediction == (rando.choixCailloux + ia.choixCailloux)):
+        ia.cailloux = ia.cailloux - 1
+        winnerRound = 1
 
-    return [winnerRound ,nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2]
-
-
-if (False):
-    [winner, round, tab] = gameIAvsRandom(3, 3)
+    return [winnerRound, ia, rando]
