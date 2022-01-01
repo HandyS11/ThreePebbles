@@ -63,7 +63,7 @@ Afin d'utiliser les différents programmes, veuiller vous munir d'une version de
 
 ## Génération des données et entrainement de l'IA
 
->Un dataset est déjà présent dans `./games/data.csv` mais vous pouvez aussi générer le votre.
+>Un dataset est déjà présent dans `./dataset/data.csv` mais vous pouvez aussi générer le votre.
 
 Pour cela : 
 

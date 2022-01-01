@@ -113,7 +113,6 @@ def printTree(model):
     plt.show()
 
 def printSVC(model):
-
     # import some data to play with
     iris = datasets.load_iris()
     X = iris.data[:, :2]  # we only take the first two features. We could

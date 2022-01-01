@@ -30,6 +30,10 @@ elif (model == 2):
     f = open("./modeles/choixArbre.pickle",'r+b')
     fi = open("./modeles/predictionArbre.pickle", 'r+b')
     print("Mode Arbre de décision")
+elif (model == 3):
+    f = open("./modeles/choixArbre.pickle",'r+b')
+    fi = open("./modeles/predictionSVC.pickle", 'r+b')
+    print("Mode Arbre + SVC")
 else:
     f = open("./modeles/choix.pickle",'r+b')
     fi = open("./modeles/prediction.pickle", 'r+b')
