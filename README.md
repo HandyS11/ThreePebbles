@@ -35,7 +35,7 @@ Liste les bibliotèques :
 - csv
 - joblib
 - math
-- matplotli
+- matplotlib
 - numpy
 - pandas
 - pickle
@@ -58,7 +58,12 @@ Afin d'utiliser les différents programmes, veuiller vous munir d'une version de
  
 `python3 ./main/main.py`
 
-> A noter que les différents modèles des IA sont déjà présents, vous pouvez cependant regénérer des données pour générer les votres.
+>A noter que les différents modèles des IA sont déjà présents, vous pouvez cependant regénérer des données pour générer les votres.
+
+
+## Génération des données et entrainement de l'IA
+
+>Un dataset est déjà présent dans `./games/data.csv` mais vous pouvez aussi générer le votre.
 
 Pour cela : 
 

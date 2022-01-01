@@ -1,6 +1,4 @@
 import csv
-import math as ma
-import matplotlib.pyplot as plt 
 import numpy as np 
 import pandas as pd
 import pickle
@@ -11,6 +9,9 @@ import warnings
 
 import joblib
 from joblib import dump, load
+
+import math as ma
+import matplotlib.pyplot as plt 
 
 import sklearn as sk 
 from sklearn import datasets
