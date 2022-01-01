@@ -15,7 +15,7 @@ def generateData(option, nbParties, nbCaillouxJ1, nbCaillouxJ2):
 
     t1 = time.time()    # temps exact avant le lancement de la generation
 
-    with open('./datasets/data.csv', 'w', newline='') as csvfile:      # ouverture/creation d'un fichier .csv
+    with open('./dataset/data.csv', 'w', newline='') as csvfile:      # ouverture/creation d'un fichier .csv
         
         spamwriter = csv.writer(csvfile, delimiter= ' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)          # options du writer
         
@@ -39,7 +39,7 @@ def generateData(option, nbParties, nbCaillouxJ1, nbCaillouxJ2):
 
 if (True):      # appel a lui meme (on le lance directement)
     
-    nbParties = 1000    # nombre de parties jouees
+    nbParties = 2000    # nombre de parties jouees
     nbCaillouxJ1 = 3    # nombre de cailloux du joueur 1
     nbCaillouxJ2 = 3    # nombre de cailloux du joueur 2
     option = 2          # option pour choisir la forme des donnees retournees 

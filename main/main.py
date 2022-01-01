@@ -1,7 +1,7 @@
 from modules import *
 sys.path.append("./games")
-#from gameIAvsRandom import *
-from gameIAvsRandomObjet import *
+from gameIAvsRandom import *
+#from gameIAvsRandomObjet import *
 warnings.filterwarnings("ignore")
 
 
@@ -13,23 +13,27 @@ warnings.filterwarnings("ignore")
 
 
 
-model = 0;      # choix du model de jeu pour l'IA
+model = -1;      # choix du model de jeu pour l'IA
 f = 0           # modele (choix)
 fi = 0          # modele (prediction)
 
 
-if(model == 0):
+if (model == 0):
     f = open("./modeles/choixSVC.pickle",'r+b')
     fi = open("./modeles/predictionSVC.pickle", 'r+b')
     print("Mode SVC")
-elif(model == 1):
+elif (model == 1):
     f = open("./modeles/choixKNN.pickle",'r+b')
     fi = open("./modeles/predictionKNN.pickle", 'r+b')
     print("Mode KNN")
-else:
+elif (model == 2):
     f = open("./modeles/choixArbre.pickle",'r+b')
     fi = open("./modeles/predictionArbre.pickle", 'r+b')
     print("Mode Arbre de décision")
+else:
+    f = open("./modeles/choix.pickle",'r+b')
+    fi = open("./modeles/prediction.pickle", 'r+b')
+    print("Mode Défaut")
 
 
 choix = pickle.load(f);         # chargement du model de choix
@@ -37,25 +41,26 @@ prediction = pickle.load(fi);   # chargement du model de prediction
 
 
 print("Début de la simulation ..\n")
-t1 = time.time()
+tempsD = time.time()    
 
-nbGames = 1000
-nbCaillouxJ1 = 3
-nbCaillouxJ2 = 3
-nbVictoireIA = 0
-sommeRounds = 0
+nbGames = 1000      # nombre de parties
+nbCaillouxJ1 = 3    # nombre de cailloux du joueur 1
+nbCaillouxJ2 = 3    # nombre de cailloux du joueur 2
+nbVictoireIA = 0    # nombre de victoire de l'IA
+sommeRounds = 0     # nombre total de round
 
 
 for i in range(0, nbGames):
-    [winner, round, tab] = gameIAvsRandomObjet(nbCaillouxJ1, nbCaillouxJ2, choix, prediction)
+    #[winner, round, tab] = gameIAvsRandomObjet(nbCaillouxJ1, nbCaillouxJ2, choix, prediction)
+    [winner, round, tab] = gameIAvsRandom(nbCaillouxJ1, nbCaillouxJ2, choix, prediction)
 
     sommeRounds = sommeRounds + round
     if (winner == 1):
         nbVictoireIA = nbVictoireIA + 1
 
-t2 = time.time()
+tempsF = time.time()
 
-tempsS = t2 - t1
+tempsS = tempsF - tempsD
 dureeM = sommeRounds/nbGames
 pourcentageV = nbVictoireIA/nbGames*100
 
