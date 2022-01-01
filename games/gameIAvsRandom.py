@@ -4,6 +4,14 @@ sys.path.append("./IA")
 from play import *
 
 
+### ---------------------------------------------------------------- ###
+###                                                                  ###
+###         Version de test de l'IA (contre un joueur random)        ###
+###                                                                  ###
+### ---------------------------------------------------------------- ###
+
+
+
 def gameIAvsRandom(nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
 
     winner = 0
@@ -72,7 +80,3 @@ def manche(round, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
             winnerRound = 1
 
     return [winnerRound ,nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2]
-
-
-if (False):
-    [winner, round, tab] = gameIAvsRandom(3, 3)

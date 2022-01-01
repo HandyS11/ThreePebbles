@@ -3,12 +3,9 @@
 ./main/__pycache__/
 ./objects/__pycache__/
 
-./games/dataBig.csv
-./games/dataSmall.csv
-*.csv
-
 ./.vscode/
 .vscode/
 
 *.json
 *.pyc
+*.csv

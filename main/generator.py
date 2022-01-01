@@ -15,7 +15,7 @@ def generateData(option, nbParties, nbCaillouxJ1, nbCaillouxJ2):
 
     t1 = time.time()    # temps exact avant le lancement de la generation
 
-    with open('data.csv', 'w', newline='') as csvfile:      # ouverture/creation d'un fichier .csv
+    with open('./datasets/data.csv', 'w', newline='') as csvfile:      # ouverture/creation d'un fichier .csv
         
         spamwriter = csv.writer(csvfile, delimiter= ' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)          # options du writer
         

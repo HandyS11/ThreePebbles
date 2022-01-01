@@ -6,13 +6,13 @@ from modules import *
 
 model = train.trainModel()
 
-d = open("choix.pickle",'w')
+d = open("./modeles/choix.pickle",'w')
 d.close()
-d = open("prediction.pickle",'w')
+d = open("./modeles/prediction.pickle",'w')
 d.close()
 
-f = open("choix.pickle",'r+b')
+f = open("./modeles/choix.pickle",'r+b')
 s1 = pickle.dump(model[0], f)
 
-fi = open("prediction.pickle", 'r+b')
+fi = open("./modeles/prediction.pickle", 'r+b')
 s2 = pickle.dump(model[1], fi)
