@@ -58,21 +58,6 @@ def manche(round, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
         if (predictionJ2 == predictionJ1):
             predictionJ2 = random.randint(0,(nbCaillouxJ1 + nbCaillouxJ2))
 
-        if (predictionJ1 == nbCaillouxTotaux):
-            nbCaillouxJ1 = nbCaillouxJ1 - 1
-            print("\nVous avez gagné, vous posez un cailloux. Il vous reste ", nbCaillouxJ1, " cailloux.")
-            print("Vous avez joué : ", choixJ1, "et l'IA à joué : ", int(choixJ2), " soit un nombre total de cailloux de : ", int(nbCaillouxTotaux))
-            print("Vous aviez prédit : ", predictionJ1, " tandis que votre adversaire avait prédis : ", int(predictionJ2))
-        elif (predictionJ2 == nbCaillouxTotaux):
-            nbCaillouxJ2 = nbCaillouxJ2 - 1
-            print("\nVotre adversaire a gagné, il pose un cailloux. Il lui reste ", nbCaillouxJ2, " cailloux.")
-            print("Vous avez joué : ", choixJ1, "et l'IA à joué : ", int(choixJ2), " soit un nombre total de cailloux de : ", int(nbCaillouxTotaux))
-            print("Vous aviez prédit : ", predictionJ1, " tandis que votre adversaire avait prédis : ", int(predictionJ2))
-        else:
-            print("\nRound nul !")
-            print("Vous avez joué : ", choixJ1, "et l'IA à joué : ", int(choixJ2), " soit un nombre total de cailloux de : ", int(nbCaillouxTotaux))
-            print("Vous aviez prédit : ", predictionJ1, " tandis que votre adversaire avait prédis : ", int(predictionJ2))
-
     else:
         predictionJ2 = predictionBigBrain(nbCaillouxJ1, nbCaillouxJ2, predictionJ2, -1, prediction)
         print("Votre adversaire à prédit ", int(predictionJ2))
@@ -82,21 +67,20 @@ def manche(round, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
             print("Prediction impossible !")
             predictionJ1 = int(input("Quelle est votre prédiction : "))
 
-        if (predictionJ2 == nbCaillouxTotaux):
-            nbCaillouxJ2 = nbCaillouxJ2 - 1
-            print("\nVotre adversaire a gagné, il pose un cailloux. Il lui reste ", nbCaillouxJ2, " cailloux.")
-            print("Vous avez joué : ", choixJ1, "et l'IA à joué : ", int(choixJ2), " soit un nombre total de cailloux de : ", int(nbCaillouxTotaux))
-            print("Vous aviez prédit : ", predictionJ1, " tandis que votre adversaire avait prédis : ", int(predictionJ2))
-        elif (predictionJ1 == nbCaillouxTotaux):
-            nbCaillouxJ1 = nbCaillouxJ1 - 1
-            print("\nVous avez gagné, vous posez un cailloux. Il vous reste ", nbCaillouxJ1, " cailloux.")
-            print("Vous avez joué : ", choixJ1, "et l'IA à joué : ", int(choixJ2), " soit un nombre total de cailloux de : ", int(nbCaillouxTotaux))
-            print("Vous aviez prédit : ", predictionJ1, " tandis que votre adversaire avait prédis : ", int(predictionJ2))
-        else:
-            print("\nRound nul !")
-            print("Vous avez joué : ", choixJ1, "et l'IA à joué : ", int(choixJ2), " soit un nombre total de cailloux de : ", int(nbCaillouxTotaux))
-            print("Vous aviez prédit : ", predictionJ1, " tandis que votre adversaire avait prédis : ", int(predictionJ2))   
-
+    if (predictionJ2 == nbCaillouxTotaux):
+        nbCaillouxJ2 = nbCaillouxJ2 - 1
+        print("\nVotre adversaire a gagné, il pose un cailloux. Il lui reste ", nbCaillouxJ2, " cailloux.")
+        print("Vous avez joué : ", choixJ1, "et l'IA à joué : ", int(choixJ2), " soit un nombre total de cailloux de : ", int(nbCaillouxTotaux))
+        print("Vous aviez prédit : ", predictionJ1, " tandis que votre adversaire avait prédis : ", int(predictionJ2))
+    elif (predictionJ1 == nbCaillouxTotaux):
+        nbCaillouxJ1 = nbCaillouxJ1 - 1
+        print("\nVous avez gagné, vous posez un cailloux. Il vous reste ", nbCaillouxJ1, " cailloux.")
+        print("Vous avez joué : ", choixJ1, "et l'IA à joué : ", int(choixJ2), " soit un nombre total de cailloux de : ", int(nbCaillouxTotaux))
+        print("Vous aviez prédit : ", predictionJ1, " tandis que votre adversaire avait prédis : ", int(predictionJ2))
+    else:
+        print("\nRound nul !")
+        print("Vous avez joué : ", choixJ1, "et l'IA à joué : ", int(choixJ2), " soit un nombre total de cailloux de : ", int(nbCaillouxTotaux))
+        print("Vous aviez prédit : ", predictionJ1, " tandis que votre adversaire avait prédis : ", int(predictionJ2))   
 
     print("\n\n")
     return [nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2]

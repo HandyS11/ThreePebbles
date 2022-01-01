@@ -25,6 +25,7 @@ def sanitizeSex(arr):
     return arr
 
 def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaArg):
+
     X = np.asarray(X)
     X = X.reshape((X.shape[1],X.shape[0]))
     y = np.asarray(y)
@@ -48,6 +49,7 @@ def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaAr
     accDT = accuracy_score(ytest, ypredit)
     
     DTconf = metrics.confusion_matrix(ytest, ypredit)
+
     #-------------------------------------------------------------------------
     
     KNN = KNeighborsClassifier()
@@ -56,6 +58,7 @@ def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaAr
     ypredit = clfKNN.predict(Xtest)
     accKNN = accuracy_score(ytest, ypredit)
     KNNConf = metrics.confusion_matrix(ytest, ypredit)
+
     #-------------------------------------------------------------------------
     
     clfSVC = svm.SVC(gamma = gammaArg)
@@ -66,12 +69,13 @@ def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaAr
     
     ypredit = clfSVC.predict(Xtest)
     SVCConf = metrics.confusion_matrix(ytest,ypredit)
+
     #-------------------------------------------------------------------------
+
     if (accDT >= accKNN) and (accDT >= accSVC):
         mostAccurate = clfDT
         print("Decision tree choosen : ",accDT," accuracy")
-        print(DTconf)
-  
+        print(DTconf) 
     elif (accKNN >= accDT) and (accKNN >= accSVC):
         mostAccurate = clfKNN
         print("KNN choosen : ",accKNN," accuracy")
@@ -82,6 +86,7 @@ def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaAr
         print(SVCConf)
 
     return mostAccurate
+
 
 def AutoPredict(data, model):
     data = np.asarray(data)
@@ -95,6 +100,7 @@ def AutoPredict(data, model):
     print("done ",i)
     return i
 
+
 def AutoPredictChoix(data, model):
     data = np.asarray(data)
     data = data[np.newaxis, :]
@@ -102,15 +108,18 @@ def AutoPredictChoix(data, model):
     i = model.predict(data)
     return i
 
+
 def AutoPredictPrediction(data, model):
     data = np.asarray(data)
     data = data[np.newaxis, :]
     i = model.predict(data)
     return i
 
+
 def printTree(model):
     tree.plot_tree(model)
     plt.show()
+
 
 def printSVC(model):
     # import some data to play with

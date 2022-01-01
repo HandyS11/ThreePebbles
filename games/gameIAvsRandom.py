@@ -60,25 +60,23 @@ def manche(round, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
             predictionJ1 = (nbCaillouxJ1+nbCaillouxJ2)      # attribution de la valeur maximale pour ne pas arrêter le programme
             
         while (predictionJ1 == predictionJ2):       # tant que la prédiction du J1 = celle du j2
-            predictionJ2 = random.randint(0,(nbCaillouxJ1 + nbCaillouxJ2))  # on essaye une nouvelle valeur pour le J2
+            predictionJ2 = random.randint(0,(nbCaillouxJ1 + nbCaillouxJ2))  # on essaye une nouvelle valeur pour le J2       
 
-        if (predictionJ1 == nbCaillouxTotaux):      # tests de victoire
-            nbCaillouxJ1 = nbCaillouxJ1 - 1
-            winnerRound = 1
-        elif (predictionJ2 == nbCaillouxTotaux):
-            nbCaillouxJ2 = nbCaillouxJ2 - 1
-            winnerRound = 2
-
-    else:   # même principe mais en inversant les 2 joueurs
+    else:       # si le round est impair
         predictionJ1 = predictionBigBrain(nbCaillouxJ1, nbCaillouxJ2, predictionJ2, choixJ1, prediction)
-        if (predictionJ1 > (nbCaillouxJ1+nbCaillouxJ2)):
-            predictionJ1 = (nbCaillouxJ1+nbCaillouxJ2)
-            
-        if (predictionJ2 == nbCaillouxTotaux):
-            nbCaillouxJ2 = nbCaillouxJ2 - 1
-            winnerRound = 2
-        elif (predictionJ1 == nbCaillouxTotaux):
-            nbCaillouxJ1 = nbCaillouxJ1 - 1
-            winnerRound = 1
+        if (predictionJ1 > (nbCaillouxJ1+nbCaillouxJ2)):        # sécurité      
+            print("L'IA a fait une prédiction impossible !")
+            print("IA :", predictionJ1, "MAX :", (nbCaillouxJ1+nbCaillouxJ2))
+            predictionJ1 = (nbCaillouxJ1+nbCaillouxJ2)      # attribution de la valeur maximale pour ne pas arrêter le programme
+
+        while (predictionJ1 == predictionJ2):               # tant que la prédiction du J1 = celle du j2
+            predictionJ1 = random.randint(0,(nbCaillouxJ1 + nbCaillouxJ2))  # on essaye une nouvelle valeur pour le J1
+
+    if (predictionJ1 == nbCaillouxTotaux):      # tests de victoire
+        nbCaillouxJ1 = nbCaillouxJ1 - 1
+        winnerRound = 1
+    elif (predictionJ2 == nbCaillouxTotaux):
+        nbCaillouxJ2 = nbCaillouxJ2 - 1
+        winnerRound = 2
 
     return [winnerRound ,nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2]

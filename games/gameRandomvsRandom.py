@@ -60,27 +60,21 @@ def manche(round, nbCaillouxJ1, nbCaillouxJ2):
     if (round%2 == 0):       # round pair 
                
         while (predictionJ1 == predictionJ2):                                   # les predictions ne doivent pas etre egales (mais on les a defini plus tot pour gagner du temps)
-            predictionJ2 = random.randint(0,(nbCaillouxJ1 + nbCaillouxJ2))      # generation d'une prediction possible (suivant les regles du jeu)
-
-        if (predictionJ1 == nbCaillouxTotaux):      # si le joueur 1 devine le nombre de cailloux joues
-            nbCaillouxJ1 = nbCaillouxJ1 - 1         # celui-ci pose un cailloux
-            winnerRound = 1                         # et gagne le round
-            
-        elif (predictionJ2 == nbCaillouxTotaux):    # si le joueur 2 devine le nombre de cailloux joues
-            nbCaillouxJ2 = nbCaillouxJ2 - 1         # celui-ci pose un cailloux
-            winnerRound = 2                         # et gagne le round
+            predictionJ2 = random.randint(0,(nbCaillouxJ1 + nbCaillouxJ2))      # generation d'une prediction possible (suivant les regles du jeu)    
 
     else:       # round impair                      #Procedure similaire au round pair
         
         while (predictionJ1 == predictionJ2):
             predictionJ1 = random.randint(0,(nbCaillouxJ1 + nbCaillouxJ2))
 
-        if (predictionJ2 == nbCaillouxTotaux):
-            nbCaillouxJ2 = nbCaillouxJ2 - 1
-            winnerRound = 2
-        elif (predictionJ1 == nbCaillouxTotaux):
-            nbCaillouxJ1 = nbCaillouxJ1 - 1
-            winnerRound = 1
+
+    if (predictionJ1 == nbCaillouxTotaux):      # si le joueur 1 devine le nombre de cailloux joues
+        nbCaillouxJ1 = nbCaillouxJ1 - 1         # celui-ci pose un cailloux
+        winnerRound = 1                         # et gagne le round
+            
+    elif (predictionJ2 == nbCaillouxTotaux):    # si le joueur 2 devine le nombre de cailloux joues
+        nbCaillouxJ2 = nbCaillouxJ2 - 1         # celui-ci pose un cailloux
+        winnerRound = 2                         # et gagne le round
 
     return [winnerRound ,nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2]
 
