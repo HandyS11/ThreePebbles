@@ -85,11 +85,11 @@ Ensuite :
 
 Pour le tournoi contre un joueur jouant aléatoirement :
 
-`python3 ./Code/main/tournoiRandom.py`
+`python3 ./Code/main/tournoiIAvsRandom.py`
 
 Pour tester les différents modèles les uns contre les autres :
 
-`python3 ./Code/main/tournoiIA.py`
+`python3 ./Code/main/tournoiIAvsIA.py`
 
 
 ## Jouez vous même au jeu
