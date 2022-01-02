@@ -1,5 +1,5 @@
 import sys
-sys.path.append("./main")
+sys.path.append("./Code/main")
 from modules import *
 
 #Ce fichier contient les fonctions liées à l'entraînement du modèle de classification et à la prédiction, et aux conversions requises.

@@ -1,11 +1,7 @@
-./games/__pycache__/
-./IA/__pycache__/
-./main/__pycache__/
-./objects/__pycache__/
+./*/__pycache__/
+*.pyc
 
-./.vscode/
 .vscode/
 
 *.json
-*.pyc
 *.csv

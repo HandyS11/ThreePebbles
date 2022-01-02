@@ -1,6 +1,8 @@
-from modules import *
+import sys
 from loader import *
-sys.path.append("./games")
+sys.path.append("./Code/main")
+from modules import *
+sys.path.append("./Code/games")
 from gameIAvsRandomObjet import *
 
 

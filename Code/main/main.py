@@ -1,6 +1,5 @@
 from modules import *
-from tournoiRandom import *
-sys.path.append("./games")
+sys.path.append("./Code/games")
 from gameIAvsRandom import *
 from gameIAvsRandomObjet import *
 from gameIAvsIAObjet import *

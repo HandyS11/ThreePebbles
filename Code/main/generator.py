@@ -1,5 +1,5 @@
 from modules import *
-sys.path.append("./games")
+sys.path.append("./Code/games")
 from gameRandomvsRandom import *
 
 
@@ -15,7 +15,7 @@ def generateData(option, nbParties, nbCaillouxJ1, nbCaillouxJ2):
 
     t1 = time.time()    # temps exact avant le lancement de la generation
 
-    with open('./dataset/data.csv', 'w', newline='') as csvfile:      # ouverture/creation d'un fichier .csv
+    with open('./DataSets/data.csv', 'w', newline='') as csvfile:      # ouverture/creation d'un fichier .csv
         
         spamwriter = csv.writer(csvfile, delimiter= ' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)          # options du writer
         

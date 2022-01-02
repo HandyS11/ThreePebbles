@@ -1,9 +1,9 @@
 import random
 import sys
 from types import new_class
-sys.path.append("./objects")
+sys.path.append("./Code/objects")
 from player import AIplayer
-sys.path.append("./IA")
+sys.path.append("./Code/IA")
 from play import *
 
 
