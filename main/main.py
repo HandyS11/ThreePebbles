@@ -1,5 +1,5 @@
 from modules import *
-from tournoi import *
+from tournoiRandom import *
 sys.path.append("./games")
 from gameIAvsRandom import *
 from gameIAvsRandomObjet import *
@@ -72,5 +72,5 @@ pourcentageV = nbVictoireIA/nbGames*100
 
 print("L'IA a gagné ", nbVictoireIA, " partie sur", nbGames)
 print("Soit un pourcentage de victoire de", pourcentageV, "%")
-print("La durée moyenne des partie est de", dureeM, "rounds.")
+print("La durée moyenne des parties est de", dureeM, "rounds.")
 print("La simulation a durée", tempsS, "secondes.\n")

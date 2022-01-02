@@ -1,24 +1,10 @@
 from modules import *
+from loader import *
 sys.path.append("./games")
 from gameIAvsRandomObjet import *
 
 
-ModeleChoixSVC = pickle.load(open("./modeles/choixSVC.pickle",'r+b')) 
-ModelePredictionSVC = pickle.load(open("./modeles/predictionSVC.pickle", 'r+b'))
-
-ModeleChoixKNN = pickle.load(open("./modeles/choixKNN.pickle",'r+b')) 
-ModelePredictionKNN = pickle.load(open("./modeles/predictionKNN.pickle", 'r+b'))
-
-ModeleChoixArbre = pickle.load(open("./modeles/choixArbre.pickle",'r+b')) 
-ModelePredictionArbre = pickle.load(open("./modeles/predictionArbre.pickle", 'r+b'))
-
-ModeleChoixDefaut = pickle.load(open("./modeles/choix.pickle",'r+b')) 
-ModelePredictionDefaut = pickle.load(open("./modeles/prediction.pickle", 'r+b'))
-
-
-choix = [ModeleChoixSVC, ModeleChoixKNN, ModeleChoixArbre, ModeleChoixDefaut]
-prediction = [ModelePredictionSVC, ModelePredictionKNN, ModelePredictionArbre, ModelePredictionDefaut]
-
+[choix, prediction] = loadModele()
 
 nbGames = 1000
 nbCaillouxJ1 = 3
@@ -50,7 +36,7 @@ for i in range(4):
         pourcentageV = nbVictoireIA/nbGames*100
 
         print("Pourcentage de victoire de", pourcentageV, "%")
-        print("La durée moyenne des partie est de", dureeM, "rounds.\n")
+        print("La durée moyenne des parties est de", dureeM, "rounds.\n")
 
 
 tempsF = time.time()

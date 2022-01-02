@@ -45,7 +45,7 @@ def Round(round, ia1, ia2):
         ia1.clipPred(ia2.cailloux)
 
         ia2.predire(ia1.cailloux, ia1.prediction)
-        ia2.clipPred(ia1.cailoux)
+        ia2.clipPred(ia1.cailloux)
 
         while (ia1.prediction == ia2.prediction):
             ia2.prediction = random.randint(0, (ia1.cailloux + ia2.cailloux))
