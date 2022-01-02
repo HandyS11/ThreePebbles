@@ -45,12 +45,16 @@ def mancheObj(round, rando, ia):   #rando = J2
         ia.predire(rando.prediction)
         ia.clipPred(rando.cailloux)
 
+        while (ia.prediction == rando.prediction):  #on empêche les situations où on ne peut pas décider du vainqueur
+            rando.predire(ia.cailloux)
+
     else:
         ia.predire(rando.cailloux)
         ia.clipPred(rando.cailloux) #limite la prédiction aux maximum
 
-    while (ia.prediction == rando.prediction):  #on empêche les situations où on ne peut pas décider du vainqueur
-        rando.predire(ia.cailloux)
+        while (ia.prediction == rando.prediction):
+            ia.prediction = random.randint(0,(ia.cailloux + rando.cailloux))
+            
             
     if (rando.prediction == (rando.choixCailloux + ia.choixCailloux)):
         rando.cailloux = rando.cailloux - 1
