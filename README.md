@@ -79,6 +79,19 @@ Ensuite :
 >Veuillez ensuite déplacer les 2 modèles créés dans le dossier `modeles` ou exécuter la commande dans ce dernier en changement le chemin relatif.
 
 
+## Tournois
+
+>Vous pouvez réalisé des tournois grâce aux différents modèle pour tester leur efficacité.
+
+Pour le tournoi contre un joueur jouant aléatoirement :
+
+`python3 ./main/tournoiRandom.py`
+
+Pour tester les différents modèles les uns contre les autres :
+
+`python3 ./main/tournoiIA.py`
+
+
 ## Jouez vous même au jeu
 
 Vous avez 2 choix possibles :

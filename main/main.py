@@ -1,7 +1,9 @@
 from modules import *
+from tournoiRandom import *
 sys.path.append("./games")
 from gameIAvsRandom import *
-#from gameIAvsRandomObjet import *
+from gameIAvsRandomObjet import *
+from gameIAvsIAObjet import *
 warnings.filterwarnings("ignore")
 
 
@@ -13,7 +15,7 @@ warnings.filterwarnings("ignore")
 
 
 
-model = -1;      # choix du model de jeu pour l'IA
+model = -1      # choix du model de jeu pour l'IA
 f = 0           # modele (choix)
 fi = 0          # modele (prediction)
 
@@ -40,8 +42,8 @@ else:
     print("Mode Défaut")
 
 
-choix = pickle.load(f);         # chargement du model de choix
-prediction = pickle.load(fi);   # chargement du model de prediction
+choix = pickle.load(f)          # chargement du model de choix
+prediction = pickle.load(fi)    # chargement du model de prediction
 
 
 print("Début de la simulation ..\n")
@@ -54,9 +56,9 @@ nbVictoireIA = 0    # nombre de victoire de l'IA
 sommeRounds = 0     # nombre total de round
 
 
-for i in range(0, nbGames):
-    #[winner, round, tab] = gameIAvsRandomObjet(nbCaillouxJ1, nbCaillouxJ2, choix, prediction)
-    [winner, round, tab] = gameIAvsRandom(nbCaillouxJ1, nbCaillouxJ2, choix, prediction)
+for i in range(nbGames):
+    #[winner, round, tab] = gameIAvsRandom(nbCaillouxJ1, nbCaillouxJ2, choix, prediction)
+    [winner, round, tab] = gameIAvsRandomObjet(nbCaillouxJ1, nbCaillouxJ2, choix, prediction) 
 
     sommeRounds = sommeRounds + round
     if (winner == 1):
@@ -70,5 +72,5 @@ pourcentageV = nbVictoireIA/nbGames*100
 
 print("L'IA a gagné ", nbVictoireIA, " partie sur", nbGames)
 print("Soit un pourcentage de victoire de", pourcentageV, "%")
-print("La durée moyenne des partie est de", dureeM, "rounds.")
+print("La durée moyenne des parties est de", dureeM, "rounds.")
 print("La simulation a durée", tempsS, "secondes.\n")

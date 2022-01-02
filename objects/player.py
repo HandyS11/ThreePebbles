@@ -1,7 +1,7 @@
 import random
 import sys
 sys.path.append("./IA")
-from train import *
+from AutoClasser import *
 
 
 class AIplayer: #Objet qui définit un joueur IA
@@ -59,6 +59,7 @@ class randPlayer:# objet qui définit un joueur random
 
     def print(self):
         print("random > cailloux: ",self.cailloux," pred: ",self.prediction," choix: ", self.choixCailloux)
+        
 #--------------------------------------------------------------------------------------------------------------------------
 class truePlayer:   #objet qui définit un vrai joueur (humain), idem, les méthodes sont identiques mais demandent une entrée.
     def __init__(self, cailloux = 3) -> None:
