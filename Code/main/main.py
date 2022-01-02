@@ -20,24 +20,24 @@ fi = 0          # modele (prediction)
 
 
 if (model == 0):
-    f = open("./modeles/choixSVC.pickle",'r+b')
-    fi = open("./modeles/predictionSVC.pickle", 'r+b')
+    f = open("./Modeles/choixSVC.pickle",'r+b')
+    fi = open("./Modeles/predictionSVC.pickle", 'r+b')
     print("Mode SVC")
 elif (model == 1):
-    f = open("./modeles/choixKNN.pickle",'r+b')
-    fi = open("./modeles/predictionKNN.pickle", 'r+b')
+    f = open("./Modeles/choixKNN.pickle",'r+b')
+    fi = open("./Modeles/predictionKNN.pickle", 'r+b')
     print("Mode KNN")
 elif (model == 2):
-    f = open("./modeles/choixArbre.pickle",'r+b')
-    fi = open("./modeles/predictionArbre.pickle", 'r+b')
+    f = open("./Modeles/choixArbre.pickle",'r+b')
+    fi = open("./Modeles/predictionArbre.pickle", 'r+b')
     print("Mode Arbre de décision")
 elif (model == 3):
-    f = open("./modeles/choixArbre.pickle",'r+b')
-    fi = open("./modeles/predictionSVC.pickle", 'r+b')
+    f = open("./Modeles/choixArbre.pickle",'r+b')
+    fi = open("./Modeles/predictionSVC.pickle", 'r+b')
     print("Mode Arbre + SVC")
 else:
-    f = open("./modeles/choix.pickle",'r+b')
-    fi = open("./modeles/prediction.pickle", 'r+b')
+    f = open("./Modeles/choix.pickle",'r+b')
+    fi = open("./Modeles/prediction.pickle", 'r+b')
     print("Mode Défaut")
 
 

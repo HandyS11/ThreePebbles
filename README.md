@@ -45,7 +45,7 @@ Liste les bibliotèques :
 - time
 - warnings
 
->Tous les modules utilisés sont trouvables dans `./main/modules.py`
+>Tous les modules utilisés sont trouvables dans `.Code/main/modules.py`
 
 
 ## Utilisation du programme
@@ -56,24 +56,24 @@ Afin d'utiliser les différents programmes, veuiller vous munir d'une version de
 
  Pour lancer la partie pricipale de programme :
  
-`python3 ./main/main.py`
+`python3 ./Code/main/main.py`
 
 >A noter que les différents modèles des IA sont déjà présents, vous pouvez cependant regénérer des données pour générer les votres.
 
 
 ## Génération des données et entrainement de l'IA
 
->Un dataset est déjà présent dans `./dataset/data.csv` mais vous pouvez aussi générer le votre.
+>Un dataset est déjà présent dans `./DataSets/data.csv` mais vous pouvez aussi générer le votre.
 
 Pour cela : 
 
-`python3 ./main/generator.py`
+`python3 ./Code/main/generator.py`
 
 >Vous pouvez vous rendre dans le fichier `generator.py` pour modifier différentes valeurs suivant ce que vous voulez obtenir.
 
 Ensuite :
 
-`python3 ./IA/script.py`
+`python3 ./Code/IA/script.py`
 
 >Ce fichier permet de "générer" les 2 IA qui serviront à jouer au jeu.
 >Veuillez ensuite déplacer les 2 modèles créés dans le dossier `modeles` ou exécuter la commande dans ce dernier en changement le chemin relatif.
@@ -85,11 +85,11 @@ Ensuite :
 
 Pour le tournoi contre un joueur jouant aléatoirement :
 
-`python3 ./main/tournoiRandom.py`
+`python3 ./Code/main/tournoiRandom.py`
 
 Pour tester les différents modèles les uns contre les autres :
 
-`python3 ./main/tournoiIA.py`
+`python3 ./Code/main/tournoiIA.py`
 
 
 ## Jouez vous même au jeu
@@ -101,6 +101,6 @@ Vous avez 2 choix possibles :
 
 Pour cela :
 
-`python3 ./games/gameHumanvsRandom.py`
+`python3 ./Code/games/gameHumanvsRandom.py`
 ou
-`python3 ./games/gameHumanvsIA.py`
+`python3 ./Code/games/gameHumanvsIA.py`
