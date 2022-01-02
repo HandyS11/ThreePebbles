@@ -2,12 +2,14 @@ import sys
 sys.path.append("./main")
 from modules import *
 
+#Ce fichier contient les fonctions liées à l'entraînement du modèle de classification et à la prédiction, et aux conversions requises.
 
+# si l'entrée n'est pas un tableau elle est convertie en tableau
 def arrayIse(notArr):
     Arr = np.asarray(notArr)
     Arr = Arr[:, np.newaxis]
     return Arr
-
+# si l'entrée contient des valeurs qui ne sont pas des chiffres (NaN), on les met 0
 def sanitize(arr):
 
     for key,value in enumerate(arr):
@@ -15,17 +17,11 @@ def sanitize(arr):
             arr[key] = 0
     return arr
 
-def sanitizeSex(arr):
-
-    for key,value in enumerate(arr):
-        if(value == "male"):
-            arr[key] = 1
-        else:
-            arr[key] = 0
-    return arr
-
+#Cette fonction va entraîner 3 modèles sur le dataset donné, un Arbre de décision, un SVM, et un Voisin proche.
+#Elle sélectionne ensuite le plus performant pour la tâche et le retourne.
 def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaArg):
 
+    #sanitation et conversions :
     X = np.asarray(X)
     X = X.reshape((X.shape[1],X.shape[0]))
     y = np.asarray(y)
@@ -40,7 +36,7 @@ def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaAr
         trainPerc = 1
     Xtrain, Xtest, ytrain, ytest = train_test_split(X,y,test_size=trainPerc,random_state=0)
 
-    #--------------------------------------------------------------------------
+    #-------------------------------------------------------------------------- Entraînement Arbre de décision
 
     Arbre_decision = DecisionTreeClassifier(random_state=0, max_depth=depthArg)
     clfDT = Arbre_decision.fit(Xtrain,ytrain)
@@ -50,7 +46,7 @@ def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaAr
     
     DTconf = metrics.confusion_matrix(ytest, ypredit)
 
-    #-------------------------------------------------------------------------
+    #------------------------------------------------------------------------- Entraînement Voisin Proche
     
     KNN = KNeighborsClassifier()
     clfKNN = KNN.fit(Xtrain, ytrain)
@@ -59,7 +55,7 @@ def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaAr
     accKNN = accuracy_score(ytest, ypredit)
     KNNConf = metrics.confusion_matrix(ytest, ypredit)
 
-    #-------------------------------------------------------------------------
+    #------------------------------------------------------------------------- Entraînement vecteurs proches (SVM)
     
     clfSVC = svm.SVC(gamma = gammaArg)
     clfSVC.fit(Xtrain,ytrain)
@@ -70,7 +66,7 @@ def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaAr
     ypredit = clfSVC.predict(Xtest)
     SVCConf = metrics.confusion_matrix(ytest,ypredit)
 
-    #-------------------------------------------------------------------------
+    #------------------------------------------------------------------------- Séléction du modèle le plus performant
 
     if (accDT >= accKNN) and (accDT >= accSVC):
         mostAccurate = clfDT
@@ -85,9 +81,9 @@ def runThroughClassificationAndTrainAndChoose(X, y, trainPerc, depthArg, gammaAr
         print("SVC choosen : ",accSVC," accuracy")
         print(SVCConf)
 
-    return mostAccurate
+    return mostAccurate #retour de ce modèle
 
-
+#prédit une valeur en fonction d'une autre valeurn donnée, en faisant les conversions requises
 def AutoPredict(data, model):
     data = np.asarray(data)
     print(data)
@@ -100,7 +96,7 @@ def AutoPredict(data, model):
     print("done ",i)
     return i
 
-
+#idem mais pour le choix d'un nombre de cailloux
 def AutoPredictChoix(data, model):
     data = np.asarray(data)
     data = data[np.newaxis, :]
@@ -108,68 +104,14 @@ def AutoPredictChoix(data, model):
     i = model.predict(data)
     return i
 
-
+#idem mais pour la prédiction d'un nombre de cailloux
 def AutoPredictPrediction(data, model):
     data = np.asarray(data)
     data = data[np.newaxis, :]
     i = model.predict(data)
     return i
 
-
+#utilisé pour le débogage des arbres de décision, les affiche
 def printTree(model):
     tree.plot_tree(model)
-    plt.show()
-
-
-def printSVC(model):
-    # import some data to play with
-    iris = datasets.load_iris()
-    X = iris.data[:, :2]  # we only take the first two features. We could
-                          # avoid this ugly slicing by using a two-dim dataset
-    y = iris.target
-
-    h = .02  # step size in the mesh
-
-    # we create an instance of SVM and fit out data. We do not scale our
-    # data since we want to plot the support vectors
-    C = 1.0  # SVM regularization parameter
-    svc = svm.SVC(kernel='linear', C=C).fit(X, y)
-    rbf_svc = svm.SVC(kernel='rbf', gamma=0.7, C=C).fit(X, y)
-    poly_svc = svm.SVC(kernel='poly', degree=3, C=C).fit(X, y)
-    lin_svc = svm.LinearSVC(C=C).fit(X, y)
-
-    # create a mesh to plot in
-    x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
-    y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
-    xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
-                         np.arange(y_min, y_max, h))
-
-    # title for the plots
-    titles = ['SVC with linear kernel',
-                  'LinearSVC (linear kernel)',
-                  'SVC with RBF kernel',
-                  'SVC with polynomial (degree 3) kernel']
-
-
-    for i, clf in enumerate((svc, lin_svc, rbf_svc, poly_svc)):
-        # Plot the decision boundary. For that, we will assign a color to each
-        # point in the mesh [x_min, x_max]x[y_min, y_max].
-        plt.subplot(2, 2, i + 1)
-        plt.subplots_adjust(wspace=0.4, hspace=0.4)
-
-        Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
-
-        # Put the result into a color plot
-        Z = Z.reshape(xx.shape)
-        plt.contourf(xx, yy, Z, cmap=plt.cm.coolwarm, alpha=0.8)
-
-        # Plot also the training points
-        plt.scatter(X[:, 0], X[:, 1], c=y, cmap=plt.cm.coolwarm)
-        plt.xlabel('Sepal length')
-        plt.ylabel('Sepal width')
-        plt.xlim(xx.min(), xx.max())
-        plt.ylim(yy.min(), yy.max())
-        plt.xticks(())
-        plt.yticks(())
-        plt.title(titles[i])
     plt.show()
