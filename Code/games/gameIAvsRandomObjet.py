@@ -7,6 +7,14 @@ sys.path.append("./Code/IA")
 from play import *
 
 
+### ---------------------------------------------------------------- ###
+###                                                                  ###
+###                        IA vs Random (objet)                      ###
+###                                                                  ###
+### ---------------------------------------------------------------- ###
+
+
+
 def gameIAvsRandomObjet(nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
 
     winner = 0

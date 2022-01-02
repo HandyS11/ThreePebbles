@@ -6,7 +6,15 @@ sys.path.append("./Code/games")
 from gameIAvsIAObjet import *
 
 
-[choix, prediction] = loadModele()
+### ---------------------------------------------------------------- ###
+###                                                                  ###
+###                     Tournoi IA vs IA (object)                    ###
+###                                                                  ###
+### ---------------------------------------------------------------- ###
+
+
+
+[choix, prediction] = loadModele()  # chargement des différents modèles
 
 nbGames = 10
 nbCaillouxJ1 = 3

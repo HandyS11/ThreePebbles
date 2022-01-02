@@ -2,7 +2,16 @@ import sys
 sys.path.append("./Code/main")
 from modules import *
 
+
+### ---------------------------------------------------------------- ###
+###                                                                  ###
+###                           Modèles..                              ###
+###                                                                  ###
+### ---------------------------------------------------------------- ###
+
 #Ce fichier contient les fonctions liées à l'entraînement du modèle de classification et à la prédiction, et aux conversions requises.
+
+
 
 # si l'entrée n'est pas un tableau elle est convertie en tableau
 def arrayIse(notArr):

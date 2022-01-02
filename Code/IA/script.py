@@ -4,6 +4,14 @@ sys.path.append("./Code/main")
 from modules import *
 
 
+### ---------------------------------------------------------------- ###
+###                                                                  ###
+###                     Enregistrement des modèles                   ###
+###                                                                  ###
+### ---------------------------------------------------------------- ###
+
+
+
 model = train.trainModel()
 
 d = open("./Modeles/choix.pickle",'w')

@@ -1,7 +1,7 @@
 # ThreePebbles
 
 
->Projet de création d'une *(enfaite 2)* IA par supervision sur le jeu : **Les 3 cailloux**
+>Projet de création d'*une* IA par supervision sur le jeu : **Les 3 cailloux**
 
 
 ## Règles du jeu
@@ -45,7 +45,7 @@ Liste les bibliotèques :
 - time
 - warnings
 
->Tous les modules utilisés sont trouvables dans `.Code/main/modules.py`
+>Tous les modules utilisés sont trouvables dans `./Code/main/modules.py`
 
 
 ## Utilisation du programme
@@ -69,17 +69,17 @@ Pour cela :
 
 `python3 ./Code/main/generator.py`
 
->Vous pouvez vous rendre dans le fichier `generator.py` pour modifier différentes valeurs suivant ce que vous voulez obtenir.
+>Vous pouvez vous rendre dans le fichier `./Code/main/generator.py` pour modifier différentes valeurs suivant ce que vous voulez obtenir.
 
 Ensuite :
 
 `python3 ./Code/IA/script.py`
 
 >Ce fichier permet de "générer" les 2 IA qui serviront à jouer au jeu.
->Veuillez ensuite déplacer les 2 modèles créés dans le dossier `modeles` ou exécuter la commande dans ce dernier en changement le chemin relatif.
+>Veuillez ensuite déplacer les 2 modèles créés dans le dossier `./Modeles` ou exécuter la commande dans ce dernier en changement le chemin relatif.
 
 
-## Tournois
+## Tournois (comparaison des modèles)
 
 >Vous pouvez réalisé des tournois grâce aux différents modèle pour tester leur efficacité.
 
@@ -97,7 +97,7 @@ Pour tester les différents modèles les uns contre les autres :
 Vous avez 2 choix possibles :
 
 - Jouer contre un *joueur aléatoire* (qui joue de manière aléatoire).
-- Jouer contre l'IA (qui prend les 2 modèles spécifiés dans `gameHumanvsIA`).
+- Jouer contre l'IA (qui prend les 2 modèles spécifiés dans `./Code/games/gameHumanvsIA`).
 
 Pour cela :
 

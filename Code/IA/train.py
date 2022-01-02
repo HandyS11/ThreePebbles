@@ -1,5 +1,11 @@
 from AutoClasser import *
 
+### ---------------------------------------------------------------- ###
+###                                                                  ###
+###            Entrainement des modèles suivant un DataSet           ###
+###                                                                  ###
+### ---------------------------------------------------------------- ###
+
 def trainModel():
     train = pd.read_csv("./DataSets/data.csv", sep=" ")
     model = runThroughClassificationAndTrainAndChoose([train['nbCaillouxJ1'],train['nbCaillouxJ2']], train['choixJ1'], 0.25,100,0.1)

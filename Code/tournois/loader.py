@@ -3,7 +3,16 @@ sys.path.append("./Code/main")
 from modules import *
 
 
-def loadModele():
+### ---------------------------------------------------------------- ###
+###                                                                  ###
+###                        Loader des modèles                        ###
+###                                                                  ###
+### ---------------------------------------------------------------- ###
+
+
+
+def loadModele():       # chargement des différents modèles 
+
     ModeleChoixSVC = pickle.load(open("./Modeles/choixSVC.pickle",'r+b')) 
     ModelePredictionSVC = pickle.load(open("./Modeles/predictionSVC.pickle", 'r+b'))
 
@@ -17,7 +26,7 @@ def loadModele():
     ModelePredictionDefaut = pickle.load(open("./Modeles/prediction.pickle", 'r+b'))
 
 
-    choix = [ModeleChoixSVC, ModeleChoixKNN, ModeleChoixArbre, ModeleChoixDefaut]
-    prediction = [ModelePredictionSVC, ModelePredictionKNN, ModelePredictionArbre, ModelePredictionDefaut]
+    choix = [ModeleChoixSVC, ModeleChoixKNN, ModeleChoixArbre, ModeleChoixDefaut]                               # tableau des modèles portant sur le choix
+    prediction = [ModelePredictionSVC, ModelePredictionKNN, ModelePredictionArbre, ModelePredictionDefaut]      # tableau des modèles portant sur la prédiction
 
     return [choix, prediction]

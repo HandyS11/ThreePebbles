@@ -4,6 +4,14 @@ sys.path.append("./Code/IA")
 from AutoClasser import *
 
 
+### ---------------------------------------------------------------- ###
+###                                                                  ###
+###          Version object permettant de simuler des parties        ###
+###                                                                  ###
+### ---------------------------------------------------------------- ###
+
+
+
 class AIplayer: #Objet qui définit un joueur IA
     def __init__(self, ChoixModel, PredictionModel,cailloux:int = 3) -> None: #constructeur du joueur IA
         self.ChoixModel = ChoixModel            #Modèle IA pour que le joueur choisisse son nombre de cailloux

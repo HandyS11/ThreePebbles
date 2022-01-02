@@ -4,6 +4,13 @@ sys.path.append("./Code/IA")
 from play import *
 
 
+### ---------------------------------------------------------------- ###
+###                                                                  ###
+###                           Humain vs IA                           ###
+###                                                                  ###
+### ---------------------------------------------------------------- ###
+
+
 
 def gameHumanvsIA(nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
 
