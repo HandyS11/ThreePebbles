@@ -67,7 +67,7 @@ def tournoiIAvsIA(nbGames, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
                         listeLength.append(-1)
                         listeName.append([i, j])
 
-                        print("Boucle infini !!\n")
+                        print("Draw infini !!\n")
 
     tempsF = time.time()
     tempsS = tempsF - tempsD
@@ -80,24 +80,24 @@ def tournoiIAvsIA(nbGames, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
 
     print("Le classement du tournoi est :")
 
-    winrate = 0
-    lenght = 0
 
     for i in range(len(choix)):
         for j in range(len(prediction)):
             cpt = 0
+            cpt2 = 0
+            winrate = 0
+            lenght = 0
             for k in range(len(stats[2])):
                 if (stats[2][k] == [i, j]):
                     winrate = winrate + stats[0][k]
+                    cpt = cpt + 1
                     if (stats[1][k] != -1):
                         lenght = lenght + stats[1][k]
-                        cpt = cpt + 1
+                        cpt2 = cpt2 + 1
             print("Modele :", [i, j])
-            print("Winrate :", winrate/k)
-            print("Durée :", lenght/cpt)
+            print("Winrate :", winrate/cpt)
+            print("Durée :", lenght/cpt2)
             print("\n")
-
-    print(stats)
 
 
 if (True):
