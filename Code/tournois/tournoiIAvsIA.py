@@ -45,15 +45,16 @@ def tournoiIAvsIA(nbGames, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
                     for m in range(nbGames):
                         [winner, round] = gameIAvsIAObjet(nbCaillouxJ1, nbCaillouxJ2, choixModeleJ1, predictionModeleJ1, choixModeleJ2, predictionModeleJ2)
 
-                        if (round != -1):
-                            sommeRounds = sommeRounds + round
+                        if (round == -1):
+                            break
 
                         if (winner == 1):
                             nbVictoireJ1 = nbVictoireJ1 + 1
 
-                    dureeM = sommeRounds/nbGames
+                        sommeRounds = sommeRounds + round
 
-                    if (dureeM != 0):
+                    if (round != -1):
+                        dureeM = sommeRounds/nbGames
                         pourcentageV = nbVictoireJ1/nbGames*100
 
                         listeWinrate.append(pourcentageV)
@@ -78,7 +79,7 @@ def tournoiIAvsIA(nbGames, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
     stats.append(listeLength)
     stats.append(listeName)
 
-    print("Le classement du tournoi est :")
+    print("Les résultats du tournoi est :\n")
 
 
     for i in range(len(choix)):
@@ -96,14 +97,17 @@ def tournoiIAvsIA(nbGames, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
                         cpt2 = cpt2 + 1
             print("Modele :", [i, j])
             print("Winrate :", winrate/cpt)
-            print("Durée :", lenght/cpt2)
+            if (cpt2 != 0):
+                print("Durée :", lenght/cpt2)
+            else:
+                print("Durée : null")
             print("\n")
 
 
 if (True):
     [choix, prediction] = loadModele()  # chargement des différents modèles
 
-    nbGames = 10
+    nbGames = 100
     nbCaillouxJ1 = 3
     nbCaillouxJ2 = 3
 
