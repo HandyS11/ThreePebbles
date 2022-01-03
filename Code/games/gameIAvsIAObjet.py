@@ -18,30 +18,30 @@ from play import *
 def gameIAvsIAObjet(nbCaillouxJ1, nbCaillouxJ2, choix1, prediction1, choix2, prediction2):
 
     winner = 0
-    winnerRound = 0
     round = 0
-    tab = []
 
     ia1 = AIplayer(choix1, prediction1, nbCaillouxJ1)
     ia2 = AIplayer(choix2, prediction2, nbCaillouxJ2)
 
     while (winner == 0):
-        [winnerRound, ia1, ia2] = Round(round, ia1, ia2)
-        tabI = [winnerRound, ia1.cailloux, ia2.cailloux, ia1.choixCailloux, ia2.choixCailloux, ia1.prediction, ia2.prediction]
-        tab.append(tabI)
-        round += 1
+        [ia1, ia2] = manche(round, ia1, ia2)
 
+        round = round + 1
+        
         if (ia1.cailloux <= 0):
             winner = 1
         elif (ia2.cailloux <= 0):
             winner = 2
 
+        if (round >= 50):
+            del ia1, ia2
+            return [-1, -1]
+
     del ia1, ia2
+    return [winner, round]
 
-    return [winner, round, tab]
 
-
-def Round(round, ia1, ia2):
+def manche(round, ia1, ia2):
 
     winnerRound = 0
 
@@ -76,4 +76,4 @@ def Round(round, ia1, ia2):
         ia2.cailloux = ia2.cailloux - 1
         winnerRound = 2
 
-    return [winnerRound, ia1, ia2]
+    return [ia1, ia2]

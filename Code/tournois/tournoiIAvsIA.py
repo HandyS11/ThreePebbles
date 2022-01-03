@@ -16,21 +16,25 @@ from gameIAvsIAObjet import *
 
 
 
-def tournoiIAvsIA(nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
+def tournoiIAvsIA(nbGames, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
 
     print("Début de la simulation ..\n")
     tempsD = time.time()
 
-    for i in range(4):
+    listeWinrate = []
+    listeLength = []
+    listeName = []
+
+    for i in range(len(choix)):
         choixModeleJ1 = choix[i]
 
-        for j in range(4):
+        for j in range(len(prediction)):
             predictionModeleJ1 = prediction[j]
 
-            for k in range(4):
+            for k in range(len(choix)):
                 choixModeleJ2 = choix[k]
 
-                for l in range(4):
+                for l in range(len(prediction)):
                     predictionModeleJ2 = prediction[l]
 
                     sommeRounds = 0
@@ -39,22 +43,61 @@ def tournoiIAvsIA(nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
                     print("Simulation n°", i, j, k, l)
 
                     for m in range(nbGames):
-                        [winner, round, tab] = gameIAvsIAObjet(nbCaillouxJ1, nbCaillouxJ2, choixModeleJ1, predictionModeleJ1, choixModeleJ2, predictionModeleJ2)
+                        [winner, round] = gameIAvsIAObjet(nbCaillouxJ1, nbCaillouxJ2, choixModeleJ1, predictionModeleJ1, choixModeleJ2, predictionModeleJ2)
 
-                        sommeRounds = sommeRounds + round
+                        if (round != -1):
+                            sommeRounds = sommeRounds + round
 
                         if (winner == 1):
                             nbVictoireJ1 = nbVictoireJ1 + 1
 
-                        dureeM = sommeRounds/nbGames
+                    dureeM = sommeRounds/nbGames
+
+                    if (dureeM != 0):
                         pourcentageV = nbVictoireJ1/nbGames*100
+
+                        listeWinrate.append(pourcentageV)
+                        listeLength.append(dureeM)
+                        listeName.append([i, j])
 
                         print("Pourcentage de victoire du joueur 1 :", pourcentageV, "%")
                         print("La durée moyenne des parties est de", dureeM, "rounds.\n")
+                    else:
+                        listeWinrate.append(50)
+                        listeLength.append(-1)
+                        listeName.append([i, j])
+
+                        print("Boucle infini !!\n")
 
     tempsF = time.time()
     tempsS = tempsF - tempsD
-    print("La simulation a durée", tempsS, "secondes.\n")
+    print("La simulation a durée", tempsS, "secondes.\n\n\n")
+
+    stats = []
+    stats.append(listeWinrate)
+    stats.append(listeLength)
+    stats.append(listeName)
+
+    print("Le classement du tournoi est :")
+
+    winrate = 0
+    lenght = 0
+
+    for i in range(len(choix)):
+        for j in range(len(prediction)):
+            cpt = 0
+            for k in range(len(stats[2])):
+                if (stats[2][k] == [i, j]):
+                    winrate = winrate + stats[0][k]
+                    if (stats[1][k] != -1):
+                        lenght = lenght + stats[1][k]
+                        cpt = cpt + 1
+            print("Modele :", [i, j])
+            print("Winrate :", winrate/k)
+            print("Durée :", lenght/cpt)
+            print("\n")
+
+    print(stats)
 
 
 if (True):
@@ -64,4 +107,4 @@ if (True):
     nbCaillouxJ1 = 3
     nbCaillouxJ2 = 3
 
-    tournoiIAvsIA(nbCaillouxJ1, nbCaillouxJ2, choix, prediction)
+    tournoiIAvsIA(nbGames, nbCaillouxJ1, nbCaillouxJ2, choix, prediction)

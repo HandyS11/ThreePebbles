@@ -19,10 +19,10 @@ def tournoiIAvsRandom(nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
     print("Début de la simulation ..\n")
     tempsD = time.time()
 
-    for i in range(4):              # du modèle (choix) présent de l'indice 0 à 3
+    for i in range(len(choix)):              # du modèle (choix) présent de l'indice 0 à 3
         choixModele = choix[i]      # on le sélectionne
 
-        for j in range(4):                      # du modèle (prédiction) présent de l'indice 0 à 3 
+        for j in range(len(prediction)):                      # du modèle (prédiction) présent de l'indice 0 à 3 
             predictionModele = prediction[j]    # on le sélectionne
 
             sommeRounds = 0     # nombre de round total
