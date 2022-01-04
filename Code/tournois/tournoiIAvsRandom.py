@@ -4,6 +4,7 @@ sys.path.append("./Code/main")
 from modules import *
 sys.path.append("./Code/games")
 from gameIAvsRandomObjet import *
+warnings.filterwarnings("ignore")
 
 
 ### ---------------------------------------------------------------- ###
@@ -19,7 +20,11 @@ def tournoiIAvsRandom(nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
     print("Début de la simulation ..\n")
     tempsD = time.time()
 
-    for i in range(len(choix)):              # du modèle (choix) présent de l'indice 0 à 3
+    listeWinrate = []
+    listeLength = []
+    listeName = []
+
+    for i in range(len(choix)):     # du modèle (choix) présent de l'indice 0 à 3
         choixModele = choix[i]      # on le sélectionne
 
         for j in range(len(prediction)):                      # du modèle (prédiction) présent de l'indice 0 à 3 
@@ -41,18 +46,50 @@ def tournoiIAvsRandom(nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
             dureeM = sommeRounds/nbGames
             pourcentageV = nbVictoireIA/nbGames*100
 
+            listeWinrate.append(pourcentageV)
+            listeLength.append(dureeM)
+            listeName.append([i, j])
+
             print("Pourcentage de victoire de", pourcentageV, "%")              # statistiques
             print("La durée moyenne des parties est de", dureeM, "rounds.\n")
 
     tempsF = time.time()
     tempsS = tempsF - tempsD
-    print("La simulation a durée", tempsS, "secondes.\n")
+    print("La simulation a durée", tempsS, "secondes.\n\n")
+
+    stats = []
+    stats.append(listeWinrate)
+    stats.append(listeLength)
+    stats.append(listeName)
+
+    print("Les résultats du tournoi est :\n")
+
+    for i in range(len(choix)):
+        for j in range(len(prediction)):
+            cpt = 0
+            cpt2 = 0
+            winrate = 0
+            lenght = 0
+            for k in range(len(stats[2])):
+                if (stats[2][k] == [i, j]):
+                    winrate = winrate + stats[0][k]
+                    cpt = cpt + 1
+                    if (stats[1][k] != -1):
+                        lenght = lenght + stats[1][k]
+                        cpt2 = cpt2 + 1
+            print("Modele :", [i, j])
+            print("Winrate :", winrate/cpt)
+            if (cpt2 != 0):
+                print("Durée :", lenght/cpt2)
+            else:
+                print("Durée : null")
+            print("\n")
 
 
 if (True):
     [choix, prediction] = loadModele()      # chargement des différents modèles
 
-    nbGames = 1000      # nombre de partie par "manche de test"
+    nbGames = 1000       # nombre de partie par "manche de test"
     nbCaillouxJ1 = 3    # nombre de cailloux du joueur 1
     nbCaillouxJ2 = 3    # nombre de cailloux du joueur 2
 
