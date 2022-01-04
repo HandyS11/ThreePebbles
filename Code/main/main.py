@@ -20,24 +20,24 @@ fi = 0          # modele (prediction)
 
 
 if (model == 0):
-    f = open("./Modeles/choixSVC.pickle",'r+b')
-    fi = open("./Modeles/predictionSVC.pickle", 'r+b')
+    f = open("./Modeles/std/choixSVC.pickle",'r+b')
+    fi = open("./Modeles/std/predictionSVC.pickle", 'r+b')
     print("Mode SVC")
 elif (model == 1):
-    f = open("./Modeles/choixKNN.pickle",'r+b')
-    fi = open("./Modeles/predictionKNN.pickle", 'r+b')
+    f = open("./Modeles/std/choixKNN.pickle",'r+b')
+    fi = open("./Modeles/std/predictionKNN.pickle", 'r+b')
     print("Mode KNN")
 elif (model == 2):
-    f = open("./Modeles/choixArbre.pickle",'r+b')
-    fi = open("./Modeles/predictionArbre.pickle", 'r+b')
+    f = open("./Modeles/std/choixArbre.pickle",'r+b')
+    fi = open("./Modeles/std/predictionArbre.pickle", 'r+b')
     print("Mode Arbre de décision")
 elif (model == 3):
-    f = open("./Modeles/choixArbre.pickle",'r+b')
-    fi = open("./Modeles/predictionSVC.pickle", 'r+b')
+    f = open("./Modeles/std/choixArbre.pickle",'r+b')
+    fi = open("./Modeles/std/predictionSVC.pickle", 'r+b')
     print("Mode Arbre + SVC")
 else:
-    f = open("./Modeles/choix.pickle",'r+b')
-    fi = open("./Modeles/prediction.pickle", 'r+b')
+    f = open("./Modeles/std/choix.pickle",'r+b')
+    fi = open("./Modeles/std/prediction.pickle", 'r+b')
     print("Mode Défaut")
 
 
@@ -71,5 +71,5 @@ pourcentageV = nbVictoireIA/nbGames*100
 
 print("L'IA a gagné ", nbVictoireIA, " partie sur", nbGames)
 print("Soit un pourcentage de victoire de", pourcentageV, "%")
-print("La durée moyenne des parties est de", dureeM, "rounds.")
+print("La durée moyenne des parties est de", dureeM, "rounds.\n")
 print("La simulation a durée", tempsS, "secondes.\n")

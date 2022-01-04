@@ -63,13 +63,17 @@ Afin d'utiliser les différents programmes, veuiller vous munir d'une version de
 
 ## Génération des données et entrainement de l'IA
 
->Un dataset est déjà présent dans `./DataSets/data.csv` mais vous pouvez aussi générer le votre.
+>Des datasets sont déjà présents dans `./DataSets/` mais vous pouvez aussi générer le votre.
 
 Pour cela : 
 
 `python3 ./Code/main/generator.py`
 
 >Vous pouvez vous rendre dans le fichier `./Code/main/generator.py` pour modifier différentes valeurs suivant ce que vous voulez obtenir.
+
+Pensez ensuite à déplacer le dataset créé dans le sous dossier de `./DataSets/` que vous désirez.
+
+>std = Standart (3 cailloux), +1 = 4 cailloux ...
 
 Ensuite :
 
