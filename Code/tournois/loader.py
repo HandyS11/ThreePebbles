@@ -11,9 +11,7 @@ from modules import *
 
 
 
-def loadModele():       # chargement des différents modèles 
-
-    pickedMode = "+1"
+def loadModele(pickedMode):       # chargement des différents modèles 
 
     ModeleChoixSVC = pickle.load(open("./Modeles/"+pickedMode+"/choixSVC.pickle",'r+b')) 
     ModelePredictionSVC = pickle.load(open("./Modeles/"+pickedMode+"/predictionSVC.pickle", 'r+b'))

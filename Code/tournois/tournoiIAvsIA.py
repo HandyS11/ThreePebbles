@@ -103,7 +103,7 @@ def tournoiIAvsIA(nbGames, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
 
 
 if (True):
-    [choix, prediction] = loadModele()  # chargement des différents modèles
+    [choix, prediction] = loadModele("std")  # chargement des différents modèles
 
     nbGames = 100
     nbCaillouxJ1 = 3
