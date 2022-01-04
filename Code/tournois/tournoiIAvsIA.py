@@ -1,11 +1,10 @@
 import sys
-
-from numpy import mod
 from loader import *
 sys.path.append("./Code/main")
 from modules import *
 sys.path.append("./Code/games")
 from gameIAvsIAObjet import *
+warnings.filterwarnings("ignore")
 
 
 ### ---------------------------------------------------------------- ###
@@ -80,7 +79,6 @@ def tournoiIAvsIA(nbGames, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
     stats.append(listeName)
 
     print("Les résultats du tournoi est :\n")
-
 
     for i in range(len(choix)):
         for j in range(len(prediction)):
