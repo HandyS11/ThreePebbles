@@ -20,9 +20,7 @@ def tournoiIAvsIA(nbGames, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
     print("Début de la simulation ..\n")
     tempsD = time.time()
 
-    listeWinrate = []
-    listeLength = []
-    listeName = []
+    tabStats = []
 
     for i in range(len(choix)):
         choixModeleJ1 = choix[i]
@@ -56,50 +54,65 @@ def tournoiIAvsIA(nbGames, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
                         dureeM = sommeRounds/nbGames
                         pourcentageV = nbVictoireJ1/nbGames*100
 
-                        listeWinrate.append(pourcentageV)
-                        listeLength.append(dureeM)
-                        listeName.append([i, j])
+                        tabT = [pourcentageV, dureeM, [i, j]]
+                        tabStats.append(tabT)
 
                         print("Pourcentage de victoire du joueur 1 :", pourcentageV, "%")
                         print("La durée moyenne des parties est de", dureeM, "rounds.\n")
                     else:
-                        listeWinrate.append(50)
-                        listeLength.append(-1)
-                        listeName.append([i, j])
+                        tabT = [50, -1, [i, j]]
+                        tabStats.append(tabT)
 
                         print("Draw infini !!\n")
-
+                    
     tempsF = time.time()
     tempsS = tempsF - tempsD
     print("La simulation a durée", tempsS, "secondes.\n\n\n")
 
-    stats = []
-    stats.append(listeWinrate)
-    stats.append(listeLength)
-    stats.append(listeName)
-
-    print("Les résultats du tournoi est :\n")
+    graphWinrate = []
+    graphLenght = []
+    etalon = list(range(1,(len(choix) * len(prediction) +1)))
+    print("Les résultats du tournoi sont :\n")
 
     for i in range(len(choix)):
         for j in range(len(prediction)):
-            cpt = 0
-            cpt2 = 0
-            winrate = 0
-            lenght = 0
-            for k in range(len(stats[2])):
-                if (stats[2][k] == [i, j]):
-                    winrate = winrate + stats[0][k]
-                    cpt = cpt + 1
-                    if (stats[1][k] != -1):
-                        lenght = lenght + stats[1][k]
-                        cpt2 = cpt2 + 1
+            winrateT = []
+            lenghtT = []
+            for k in range((len(choix) * len(prediction))**2):
+                if (tabStats[k][2] == [i, j]):
+                    winrateT.append(tabStats[k][0])
+                    if (tabStats[k][1] != -1):
+                        lenghtT.append(tabStats[k][1])
+
             print("Modele :", [i, j])
-            print("Winrate :", winrate/cpt)
-            if (cpt2 != 0):
-                print("Durée :", lenght/cpt2)
+
+            if (len(winrateT) != 0):
+                winrateG = sum(winrateT)/len(winrateT)
             else:
-                print("Durée : null")
+                winrateG = 0
+            print("Winrate :", winrateG) 
+
+            if (len(lenghtT) != 0):
+                lenghtG = sum(lenghtT)/len(lenghtT)
+            else:
+                lenghtG = 0
+            print("Durée :", lenghtG)
             print("\n")
+
+            graphWinrate.append(winrateG)
+            graphLenght.append(lenghtG)
+
+    plt.bar(etalon, graphWinrate, align = 'center')
+    plt.title('Taux de victoire par combinaison de modèle')
+    plt.ylabel('Taux de victoire `%`')
+    plt.xlabel('Numéro de la combinaison de modèle')
+    plt.show()
+
+    plt.bar(etalon, graphLenght, align = 'center')
+    plt.title('Durée moyenne des parties par combinaison de modèle')
+    plt.ylabel('Durée des parties`')
+    plt.xlabel('Numéro de la combinaison de modèle')
+    plt.show()
 
 
 if (True):
