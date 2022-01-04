@@ -18,18 +18,18 @@ warnings.filterwarnings("ignore")
 def tournoiIAvsRandom(nbGames, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):  
 
     print("Début de la simulation ..\n")
-    tempsD = time.time()
+    tempsD = time.time()    # temps exact avant la simulation
 
-    tabStats = []
+    tabStats = []       # tableau de statistique sur les parties
 
-    for i in range(len(choix)):     # du modèle (choix) présent de l'indice 0 à 3
+    for i in range(len(choix)):     # du modèle (choix) présent de l'indice (0 à 2 dans notre cas)
         choixModele = choix[i]      # on le sélectionne
 
-        for j in range(len(prediction)):                      # du modèle (prédiction) présent de l'indice 0 à 3 
+        for j in range(len(prediction)):        # du modèle (prédiction) présent de l'indice (0 à 2 dans notre cas)
             predictionModele = prediction[j]    # on le sélectionne
 
-            sommeRounds = 0     # nombre de round total
-            nbVictoireIA = 0    # nombre de victoire (j1)
+            sommeRounds = 0     # nombre de manches totales
+            nbVictoireIA = 0    # nombre de victoires (j1)
 
             print("Simulation n°", i, j)    # repère visuel pour savoir quel model est en train de jouer
 
@@ -50,33 +50,29 @@ def tournoiIAvsRandom(nbGames, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
             print("Pourcentage de victoire de", pourcentageV, "%")              # statistiques
             print("La durée moyenne des parties est de", dureeM, "rounds.\n")
 
-    tempsF = time.time()
-    tempsS = tempsF - tempsD
+    tempsF = time.time()        # temps exact à la fin de la simulation
+    tempsS = tempsF - tempsD    # calcul de la durée de la simulation
     print("La simulation a durée", tempsS, "secondes.\n\n")
 
-    graphWinrate = []
-    graphLenght = []
-    etalon = list(range(1,(len(choix) * len(prediction) + 1)))
+    graphWinrate = []       # tableau de données sur le % de victoire
+    graphLenght = []        # tableau de données sur la durrée des manches
+    etalon = list(range(1,(len(choix) * len(prediction) + 1)))      # représente un numéro de modèle (1 à n modèle)
     print("Les résultats du tournoi est :\n")
 
-    for i in range(len(choix)):
-        for j in range(len(prediction)):
-            winrateT = 0
-            lenghtT = 0
-            for k in range((len(choix) * len(prediction))):
-                if (tabStats[k][2] == [i, j]):
-                    winrateT = tabStats[k][0]
-                    lenghtT = tabStats[k][1]
+    for i in range(len(choix)):             # pour tous les modèles choix
+        for j in range(len(prediction)):    # pour tous les modèles prédiction
+            for k in range((len(choix) * len(prediction))):     # pour toutes les données du tableau de statistique
+                if (tabStats[k][2] == [i, j]):      # si la donnée correspond à la bonne combinaison de modèles (inutile car le tableau est trié mais fonctionnerait si il ne l'était pas)
 
-            print("Modele :", [i, j])
-            print("Winrate :", winrateT) 
-            print("Durée :", lenghtT)
-            print("\n")
+                    print("Modele :", [i, j])
+                    print("Winrate :", tabStats[k][0]) 
+                    print("Durée :", tabStats[k][1])
+                    print("\n")
 
-            graphWinrate.append(winrateT)
-            graphLenght.append(lenghtT)
+                    graphWinrate.append(tabStats[k][0])     # ajout de la valeur pour ce modèle au tableau de stats pour le graph
+                    graphLenght.append(tabStats[k][1])
 
-    plt.bar(etalon, graphWinrate, align = 'center')
+    plt.bar(etalon, graphWinrate, align = 'center')             # création des graphs
     plt.title('Taux de victoire par combinaison de modèle')
     plt.ylabel('Taux de victoire `%`')
     plt.xlabel('Numéro de la combinaison de modèle')
@@ -92,8 +88,8 @@ def tournoiIAvsRandom(nbGames, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
 if (True):
     [choix, prediction] = loadModele("std")      # chargement des différents modèles
 
-    nbGames = 1000      # nombre de partie par "manche de test"
+    nbGames = 1000      # nombre de partie jouées pour chaque combinaison de modèle
     nbCaillouxJ1 = 3    # nombre de cailloux du joueur 1
     nbCaillouxJ2 = 3    # nombre de cailloux du joueur 2
 
-    tournoiIAvsRandom(nbGames, nbCaillouxJ1, nbCaillouxJ2, choix, prediction)
+    tournoiIAvsRandom(nbGames, nbCaillouxJ1, nbCaillouxJ2, choix, prediction)   # lancement du tournoi
