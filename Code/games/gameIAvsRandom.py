@@ -40,26 +40,25 @@ def manche(round, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
     winnerRound = 0     # sécurité (remise à 0)
     
     choixJ1 = choixBigBrain(nbCaillouxJ1, nbCaillouxJ2, choix)  # l'IA choisi combien de cailloux elle veut jouer
-    if (choixJ1 > nbCaillouxJ1):        # sécurité
+    if (choixJ1 > nbCaillouxJ1):                        # sécurité
         print("L'IA a fait un choix impossible !")
         print("IA :", choixJ1, "MAX :", nbCaillouxJ1)
-        choixJ1 = nbCaillouxJ1          # attribution de la valeur maximale pour ne pas arrêter le programme
+        choixJ1 = nbCaillouxJ1                          # attribution de la valeur maximale pour ne pas arrêter le programme
         
     choixJ2 = random.randint(0,nbCaillouxJ2)    # le joueur aléatoire choisi combien de cailloux il joue
-
     nbCaillouxTotaux = choixJ1 + choixJ2        # somme des cailloux sur le plateau
 
     predictionJ2 = random.randint(0,(nbCaillouxJ1 + nbCaillouxJ2))  # attribution d'une valeur temporaire pour optimiser le futur choix (si )
-    predictionJ1 = 0    # sécurité (va être modifier dans le if/else qui suit)
+    predictionJ1 = 0                                                # sécurité (va être modifier dans le if/else qui suit)
 
-    if (round%2 == 0):  #si le round est pair
+    if (round%2 == 0):  #si le round est impair (le comteur est toujours en retard de 1)
         predictionJ1 = predictionBigBrain(nbCaillouxJ1, nbCaillouxJ2, -1, choixJ1, prediction)  # l'IA prédit le nombre total de cailloux sur le plateau
-        if (predictionJ1 > (nbCaillouxJ1+nbCaillouxJ2)):        # sécurité      
+        if (predictionJ1 > (nbCaillouxJ1+nbCaillouxJ2)):                        # sécurité      
             print("L'IA a fait une prédiction impossible !")
             print("IA :", predictionJ1, "MAX :", (nbCaillouxJ1+nbCaillouxJ2))
-            predictionJ1 = (nbCaillouxJ1+nbCaillouxJ2)      # attribution de la valeur maximale pour ne pas arrêter le programme
+            predictionJ1 = (nbCaillouxJ1+nbCaillouxJ2)                          # attribution de la valeur maximale pour ne pas arrêter le programme
             
-        while (predictionJ1 == predictionJ2):       # tant que la prédiction du J1 = celle du j2
+        while (predictionJ1 == predictionJ2):                               # tant que la prédiction du J1 = celle du j2
             predictionJ2 = random.randint(0,(nbCaillouxJ1 + nbCaillouxJ2))  # on essaye une nouvelle valeur pour le J2       
 
     else:       # si le round est impair

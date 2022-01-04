@@ -10,6 +10,7 @@ from play import *
 ###                                                                  ###
 ### ---------------------------------------------------------------- ###
 
+# Pas de commentaire sur de fichier (même fonctionnement que "gameIAvsRandom.py")
 
 
 def gameHumanvsIA(nbCaillouxJ1, nbCaillouxJ2, choix, prediction):

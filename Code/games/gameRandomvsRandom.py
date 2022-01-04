@@ -19,7 +19,7 @@ def gameRandomvsRandom(option, nbCaillouxJ1, nbCaillouxJ2):
     while (winner == 0):    # boucle generale de jeu
 
         [winnerRound, nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2] = manche(round, nbCaillouxJ1, nbCaillouxJ2)     # lancement d'une manche et recuperation des valeurs jouees
-        tabI = []       # tableau intermédiaire
+        tabI = []           # tableau intermédiaire
         
         if (option == 1):
             tabI = [winnerRound, nbCaillouxJ1, nbCaillouxJ2, choixJ1, choixJ2, predictionJ1, predictionJ2]              # ajout des valeurs de la manche dans un tableau temporaire

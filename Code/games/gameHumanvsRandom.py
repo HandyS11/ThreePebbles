@@ -7,6 +7,7 @@ import random
 ###                                                                  ###
 ### ---------------------------------------------------------------- ###
 
+# Pas de commentaire sur de fichier (même fonctionnement que "gameIAvsRandom.py")
 
 
 def gameWithHuman():

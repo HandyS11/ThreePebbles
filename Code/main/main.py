@@ -1,8 +1,6 @@
 from modules import *
 sys.path.append("./Code/games")
-from gameIAvsRandom import *
 from gameIAvsRandomObjet import *
-from gameIAvsIAObjet import *
 warnings.filterwarnings("ignore")
 
 
@@ -56,7 +54,6 @@ sommeRounds = 0     # nombre total de round
 
 
 for i in range(nbGames):
-    #[winner, round, tab] = gameIAvsRandom(nbCaillouxJ1, nbCaillouxJ2, choix, prediction)
     [winner, round, tab] = gameIAvsRandomObjet(nbCaillouxJ1, nbCaillouxJ2, choix, prediction) 
 
     sommeRounds = sommeRounds + round
