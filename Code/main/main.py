@@ -18,27 +18,26 @@ model = -1      # choix du model de jeu pour l'IA
 f = 0           # modele (choix)
 fi = 0          # modele (prediction)
 
-pickedMode = "std"
 
 if (model == 0):
-    f = open("./Modeles/"+pickedMode+"/choixSVC.pickle",'r+b')
-    fi = open("./Modeles/"+pickedMode+"/predictionSVC.pickle", 'r+b')
+    f = open("./Modeles/choixSVC.pickle",'r+b')
+    fi = open("./Modeles/predictionSVC.pickle", 'r+b')
     print("Mode SVC")
 elif (model == 1):
-    f = open("./Modeles/"+pickedMode+"/choixKNN.pickle",'r+b')
-    fi = open("./Modeles/"+pickedMode+"/predictionKNN.pickle", 'r+b')
+    f = open("./Modeles/choixKNN.pickle",'r+b')
+    fi = open("./Modeles/predictionKNN.pickle", 'r+b')
     print("Mode KNN")
 elif (model == 2):
-    f = open("./Modeles/"+pickedMode+"/choixArbre.pickle",'r+b')
-    fi = open("./Modeles/"+pickedMode+"/predictionArbre.pickle", 'r+b')
+    f = open("./Modeles/choixArbre.pickle",'r+b')
+    fi = open("./Modeles/predictionArbre.pickle", 'r+b')
     print("Mode Arbre de décision")
 elif (model == 3):
-    f = open("./Modeles/"+pickedMode+"/choixArbre.pickle",'r+b')
-    fi = open("./Modeles/"+pickedMode+"/predictionSVC.pickle", 'r+b')
+    f = open("./Modeles/choixArbre.pickle",'r+b')
+    fi = open("./Modeles/predictionSVC.pickle", 'r+b')
     print("Mode Arbre + SVC")
 else:
-    f = open("./Modeles/"+pickedMode+"/choix.pickle",'r+b')
-    fi = open("./Modeles/"+pickedMode+"/prediction.pickle", 'r+b')
+    f = open("./Modeles/choix.pickle",'r+b')
+    fi = open("./Modeles/prediction.pickle", 'r+b')
     print("Mode Défaut")
 
 
