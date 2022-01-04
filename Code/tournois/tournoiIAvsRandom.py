@@ -90,10 +90,16 @@ def tournoiIAvsRandom(nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
     plt.show()
 
 if (True):
-    [choix, prediction] = loadModele("+2")      # chargement des différents modèles
+    [choix, prediction] = loadModele("std")      # chargement des différents modèles
 
+<<<<<<< HEAD
     nbGames = 10       # nombre de partie par "manche de test"
     nbCaillouxJ1 = 3    # nombre de cailloux du joueur 1
     nbCaillouxJ2 = 3    # nombre de cailloux du joueur 2
+=======
+    nbGames = 1000       # nombre de partie par "manche de test"
+    nbCaillouxJ1 = 4    # nombre de cailloux du joueur 1
+    nbCaillouxJ2 = 4    # nombre de cailloux du joueur 2
+>>>>>>> 8728ce041962c9a7acebcfb917600554690485b2
 
     tournoiIAvsRandom(nbCaillouxJ1, nbCaillouxJ2, choix, prediction)

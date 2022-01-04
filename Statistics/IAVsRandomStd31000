@@ -1,0 +1,86 @@
+Début de la simulation ..
+
+Simulation n° 0 0
+Pourcentage de victoire de 81.10000000000001 %
+La durée moyenne des parties est de 22.417 rounds.
+
+Simulation n° 0 1
+Pourcentage de victoire de 63.7 %
+La durée moyenne des parties est de 23.696 rounds.
+
+Simulation n° 0 2
+Pourcentage de victoire de 69.89999999999999 %
+La durée moyenne des parties est de 23.689 rounds.
+
+Simulation n° 1 0
+Pourcentage de victoire de 21.8 %
+La durée moyenne des parties est de 39.074 rounds.
+
+Simulation n° 1 1
+Pourcentage de victoire de 40.300000000000004 %
+La durée moyenne des parties est de 27.407 rounds.
+
+Simulation n° 1 2
+Pourcentage de victoire de 37.8 %
+La durée moyenne des parties est de 30.8 rounds.
+
+Simulation n° 2 0
+Pourcentage de victoire de 74.9 %
+La durée moyenne des parties est de 22.913 rounds.
+
+Simulation n° 2 1
+Pourcentage de victoire de 71.3 %
+La durée moyenne des parties est de 23.679 rounds.
+
+Simulation n° 2 2
+Pourcentage de victoire de 72.39999999999999 %
+La durée moyenne des parties est de 23.643 rounds.
+
+La simulation a durée 176.14072704315186 secondes.
+
+
+Les résultats du tournoi est :
+
+Modele : [0, 0]
+Winrate : 81.10000000000001
+Durée : 22.417
+
+
+Modele : [0, 1]
+Winrate : 63.7
+Durée : 23.696
+
+
+Modele : [0, 2]
+Winrate : 69.89999999999999
+Durée : 23.689
+
+
+Modele : [1, 0]
+Winrate : 21.8
+Durée : 39.074
+
+
+Modele : [1, 1]
+Winrate : 40.300000000000004
+Durée : 27.407
+
+
+Modele : [1, 2]
+Winrate : 37.8
+Durée : 30.8
+
+
+Modele : [2, 0]
+Winrate : 74.9
+Durée : 22.913
+
+
+Modele : [2, 1]
+Winrate : 71.3
+Durée : 23.679
+
+
+Modele : [2, 2]
+Winrate : 72.39999999999999
+Durée : 23.643
