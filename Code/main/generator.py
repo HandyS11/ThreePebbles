@@ -40,8 +40,8 @@ def generateData(option, nbParties, nbCaillouxJ1, nbCaillouxJ2):
 if (True):      # appel a lui meme (on le lance directement)
     
     nbParties = 2000    # nombre de parties jouées
-    nbCaillouxJ1 = 3    # nombre de cailloux du joueur 1
-    nbCaillouxJ2 = 3    # nombre de cailloux du joueur 2
+    nbCaillouxJ1 = 5    # nombre de cailloux du joueur 1
+    nbCaillouxJ2 = 5    # nombre de cailloux du joueur 2
     option = 2          # option pour choisir la forme des donnees retournees 
     
     print("Beginnig generation.\n")
