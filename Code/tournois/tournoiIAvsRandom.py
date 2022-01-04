@@ -38,14 +38,14 @@ def tournoiIAvsRandom(nbGames, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
 
                 sommeRounds = sommeRounds + round   # incrémentation de la somme des round
 
-                if (winner == 1):       # test d'arrêt
+                if (winner == 1):                       # test de victoire
                     nbVictoireIA = nbVictoireIA + 1     # incrémentation nombre de victoire
 
-            dureeM = sommeRounds/nbGames
-            pourcentageV = nbVictoireIA/nbGames*100
+            dureeM = sommeRounds/nbGames                # durée moyenne des manches
+            pourcentageV = nbVictoireIA/nbGames*100     # pourcentage de victoire
 
-            tabT = [pourcentageV, dureeM, [i, j]]
-            tabStats.append(tabT)
+            tabT = [pourcentageV, dureeM, [i, j]]       # tableau temporaire
+            tabStats.append(tabT)                       # ajout du tableau temporaire au tableau des statistiques global
 
             print("Pourcentage de victoire de", pourcentageV, "%")              # statistiques
             print("La durée moyenne des parties est de", dureeM, "rounds.\n")
@@ -61,31 +61,20 @@ def tournoiIAvsRandom(nbGames, nbCaillouxJ1, nbCaillouxJ2, choix, prediction):
 
     for i in range(len(choix)):
         for j in range(len(prediction)):
-            winrateT = []
-            lenghtT = []
+            winrateT = 0
+            lenghtT = 0
             for k in range((len(choix) * len(prediction))):
                 if (tabStats[k][2] == [i, j]):
-                    winrateT.append(tabStats[k][0])
-                    if (tabStats[k][1] != -1):
-                        lenghtT.append(tabStats[k][1])
+                    winrateT = tabStats[k][0]
+                    lenghtT = tabStats[k][1]
 
             print("Modele :", [i, j])
-
-            if (len(winrateT) != 0):
-                winrateG = sum(winrateT)/len(winrateT)
-            else:
-                winrateG = 0
-            print("Winrate :", winrateG) 
-
-            if (len(lenghtT) != 0):
-                lenghtG = sum(lenghtT)/len(lenghtT)
-            else:
-                lenghtG = 0
-            print("Durée :", lenghtG)
+            print("Winrate :", winrateT) 
+            print("Durée :", lenghtT)
             print("\n")
 
-            graphWinrate.append(winrateG)
-            graphLenght.append(lenghtG)
+            graphWinrate.append(winrateT)
+            graphLenght.append(lenghtT)
 
     plt.bar(etalon, graphWinrate, align = 'center')
     plt.title('Taux de victoire par combinaison de modèle')
