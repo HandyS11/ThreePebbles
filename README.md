@@ -85,7 +85,7 @@ Ensuite :
 
 ## Tournois (comparaison des modèles)
 
->Vous pouvez réalisé des tournois grâce aux différents modèle pour tester leur efficacité.
+>Vous pouvez réaliser des tournois grâce aux différents modèles pour tester leur efficacité.
 
 Pour le tournoi contre un joueur jouant aléatoirement :
 
